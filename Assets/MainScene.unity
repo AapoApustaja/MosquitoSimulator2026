@@ -719,6 +719,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6985b37558de4c743ae0997ee6656064, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1385860511}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6985b37558de4c743ae0997ee6656064, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1385860512}
   m_SourcePrefab: {fileID: 100100000, guid: 6985b37558de4c743ae0997ee6656064, type: 3}
 --- !u!1 &535400377 stripped
 GameObject:
@@ -1422,9 +1425,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 966949bcf00e106438d7be1dac622508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MosquitoMovemint
-  speed: 15
-  rotationspeed: 200
-  turnspeed: 200
+  rb: {fileID: 1385860509}
+  responsiviness: 5
+  throttleAmount: 20
 --- !u!54 &1385860509
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1433,7 +1436,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1385860507}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1450,7 +1453,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!4 &1385860510 stripped
 Transform:
@@ -1476,8 +1479,31 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 2.0251846, z: 3.4517395}
-  m_Center: {x: -0.0000000012606822, y: 1.8030357, z: -0.9171199}
+  m_Size: {x: 1.8931514, y: 2.0251846, z: 3.4517395}
+  m_Center: {x: -0.09096387, y: 1.8030357, z: -0.9171199}
+--- !u!136 &1385860512
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385860507}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 1.7766851
+  m_Height: 3.5533702
+  m_Direction: 1
+  m_Center: {x: 0.05673884, y: 1.8732601, z: -1.333428}
 --- !u!1001 &1404708682
 PrefabInstance:
   m_ObjectHideFlags: 0

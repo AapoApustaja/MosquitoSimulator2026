@@ -2,55 +2,58 @@ using UnityEngine;
 
 public class MosquitoMovemint : MonoBehaviour
 {
-    public float speed = 4.0f;
-	public float rotationspeed = 20.0f;
-	public float turnspeed = 20.0f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+	public Rigidbody rb;
+
+	[SerializeField] private float responsiviness = 50f;
+	[SerializeField] private float throttleAmount = 25f;
+
+	private float throttle;
+
+	private float roll;
+	private float pitch;
+	private float yaw;
+
+	// Start is called once before the first execution of Update after the MonoBehaviour is created
+	void Start()
     {
         
     }
 
-    // Update is called once per frame
+    // Rigidbodyyn k‰ytet‰‰ fixed
     void Update()
     {
-        // Hakee input pystyss‰ ja sivuttain
-		float verticalInput = Input.GetAxis("Vertical");
-		float HorizontalInput = Input.GetAxis("Horizontal");    
+		HandleInputs();
 
-        // liikutellaa
-		transform.Translate(Vector3.forward * verticalInput * speed * Time.deltaTime); 
-		transform.Translate(Vector3.right * HorizontalInput * speed * Time.deltaTime);
+	}
 
-		//K‰‰nnet‰‰n
-		transform.Rotate(Vector3.right * verticalInput * rotationspeed * Time.deltaTime);
-		transform.Rotate(Vector3.back * HorizontalInput * rotationspeed * Time.deltaTime);
+	private void FixedUpdate()
+	{
+		rb.AddForce(transform.up * throttle, ForceMode.Impulse);
 
-		// Ylˆsp‰in kun space
-		if (Input.GetKey(KeyCode.UpArrow))
+		rb.AddTorque(transform.right * pitch * responsiviness);
+		rb.AddTorque(-transform.forward * roll * responsiviness);
+		rb.AddTorque(transform.up * yaw * responsiviness);
+
+
+
+	}
+
+	private void HandleInputs()
+	{
+		roll = Input.GetAxis("Horizontal");
+		pitch = Input.GetAxis("Vertical");
+		yaw = Input.GetAxis("Yaw");
+
+		if(Input.GetKey(KeyCode.UpArrow))
 		{
-			transform.Translate(Vector3.up * speed * Time.deltaTime);
+			throttle += Time.deltaTime * throttleAmount;
 		}
-
-		// alasp‰in ku control
-		if (Input.GetKey(KeyCode.DownArrow))
+		else if(Input.GetKey(KeyCode.DownArrow))
 		{
-			transform.Translate(Vector3.down * speed * Time.deltaTime);
+			throttle -= Time.deltaTime * throttleAmount;
 		}
-
-		//k‰‰ntyy oikealle
-		if (Input.GetKey(KeyCode.RightArrow))
-		{
-			transform.Rotate(Vector3.up * turnspeed * Time.deltaTime);
-		}
-
-		// K‰‰ntyy vasemmalle
-		if (Input.GetKey(KeyCode.LeftArrow))
-		{
-			
-			transform.Rotate(Vector3.up * -turnspeed * Time.deltaTime);
-		}
+		throttle = Mathf.Clamp(throttle, 0f, 100f);
 	}
 }
     
