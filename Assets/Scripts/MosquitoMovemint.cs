@@ -5,6 +5,8 @@ public class MosquitoMovemint : MonoBehaviour
 
 	public Rigidbody rb;
 
+	private Animator animator;
+
 	[SerializeField] private float responsiviness = 50f;
 	[SerializeField] private float throttleAmount = 100f;
 
@@ -17,14 +19,13 @@ public class MosquitoMovemint : MonoBehaviour
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
     // Rigidbodyyn k‰ytet‰‰ fixed
     void Update()
     {
 		HandleInputs();
-
 	}
 
 	private void FixedUpdate()
@@ -46,10 +47,16 @@ public class MosquitoMovemint : MonoBehaviour
 		if(Input.GetKey(KeyCode.UpArrow))
 		{
 			throttle += Time.deltaTime * throttleAmount;
+
+			// Lento p‰‰lle
+			animator.SetBool("Flying", true);
 		}
 		else if(Input.GetKey(KeyCode.DownArrow))
 		{
 			throttle -= Time.deltaTime * throttleAmount;
+
+			// Lento pois
+			animator.SetBool("Flying", false);
 		}
 		throttle = Mathf.Clamp(throttle, -100f, 100f);
 
