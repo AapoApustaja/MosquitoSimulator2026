@@ -6,10 +6,10 @@ public class MosquitoMovemint : MonoBehaviour
 	public Rigidbody rb;
 
 	[SerializeField] private float responsiviness = 50f;
-	[SerializeField] private float throttleAmount = 25f;
+	[SerializeField] private float throttleAmount = 100f;
 
 	private float throttle;
-
+	private Vector3 rotationTorque;
 	private float roll;
 	private float pitch;
 	private float yaw;
@@ -35,8 +35,6 @@ public class MosquitoMovemint : MonoBehaviour
 		rb.AddTorque(-transform.forward * roll * responsiviness);
 		rb.AddTorque(transform.up * yaw * responsiviness);
 
-
-
 	}
 
 	private void HandleInputs()
@@ -53,7 +51,16 @@ public class MosquitoMovemint : MonoBehaviour
 		{
 			throttle -= Time.deltaTime * throttleAmount;
 		}
-		throttle = Mathf.Clamp(throttle, 0f, 100f);
+		throttle = Mathf.Clamp(throttle, -200f, 200f);
+
+		if(Input.GetKey(KeyCode.Space))
+		{
+			rotationTorque = new Vector3(0, 0, 1);
+		}
+		else
+		{
+			rotationTorque = new Vector3(0, 0, 0);
+		}
 	}
 }
     
