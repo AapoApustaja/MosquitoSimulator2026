@@ -25,6 +25,8 @@ public class MosquitoMovemint : MonoBehaviour
     // Rigidbodyyn k‰ytet‰‰ fixed
     void Update()
     {
+		CheckBoundaries();
+
 		HandleInputs();
 	}
 
@@ -61,5 +63,36 @@ public class MosquitoMovemint : MonoBehaviour
 		throttle = Mathf.Clamp(throttle, -100f, 100f);
 
 	}
+
+	/// <summary>
+	/// Tarkistaa rajat kartasta ja est‰‰ p‰‰syn
+	/// </summary>
+	private void CheckBoundaries()
+	{
+		// Negatiivine X
+		if(transform.position.x < -90)
+		{
+			transform.position = new Vector3(-90, transform.position.y, transform.position.z); 
+		}
+
+		// Positiivine X
+        if (transform.position.x > 95)
+        {
+            transform.position = new Vector3(95, transform.position.y, transform.position.z);
+        }
+
+		// Negatiivine Z
+        if (transform.position.z < -80)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -80);
+        }
+
+		// Positiivine Z
+        if (transform.position.z > 95)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, 95);
+        }
+    }
+
 }
     
