@@ -60,14 +60,6 @@ public class MosquitoMovemint : MonoBehaviour
 		}
 		throttle = Mathf.Clamp(throttle, -100f, 100f);
 
-		if(Input.GetKey(KeyCode.Space))
-		{
-			rotationTorque = new Vector3(0, 0, 1);
-		}
-		else
-		{
-			rotationTorque = new Vector3(0, 0, 0);
-		}
 	}
 }
     
