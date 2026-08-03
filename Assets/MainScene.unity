@@ -880,6 +880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 531957457}
   - component: {fileID: 531957458}
+  - component: {fileID: 531957459}
   m_Layer: 0
   m_Name: Stinger
   m_TagString: Untagged
@@ -925,6 +926,18 @@ CapsuleCollider:
   m_Height: 0.52047074
   m_Direction: 2
   m_Center: {x: -0, y: 1.39, z: 3.46}
+--- !u!114 &531957459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531957456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 443cc70731a551f43a3cc185e31c72b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StingHit
 --- !u!1 &535400377 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: 7e88652582107ed4b99fce8bfe153ec8, type: 3}
