@@ -51,7 +51,7 @@ public class MosquitoMovemint : MonoBehaviour
 		{
 			throttle -= Time.deltaTime * throttleAmount;
 		}
-		throttle = Mathf.Clamp(throttle, -200f, 200f);
+		throttle = Mathf.Clamp(throttle, -100f, 100f);
 
 		if(Input.GetKey(KeyCode.Space))
 		{
