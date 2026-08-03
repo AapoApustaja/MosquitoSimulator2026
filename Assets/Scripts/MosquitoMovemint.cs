@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class MosquitoMovemint : MonoBehaviour
@@ -69,29 +70,52 @@ public class MosquitoMovemint : MonoBehaviour
 	/// </summary>
 	private void CheckBoundaries()
 	{
-		// Negatiivine X
-		if(transform.position.x < -90)
-		{
-			transform.position = new Vector3(-90, transform.position.y, transform.position.z); 
-		}
 
-		// Positiivine X
+        // Negatiivine X
+        if (transform.position.x < -90)
+        {
+            transform.position = new Vector3(-90, transform.position.y, transform.position.z);
+        }
+
+        // Positiivine X
         if (transform.position.x > 95)
         {
             transform.position = new Vector3(95, transform.position.y, transform.position.z);
         }
 
-		// Negatiivine Z
+        // Negatiivine Z
         if (transform.position.z < -80)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, -80);
         }
 
-		// Positiivine Z
+        // Positiivine Z
         if (transform.position.z > 95)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, 95);
         }
+
+        // Alternate versio myöhemmälle
+        //if(transform.position.x < -90 || transform.position.x > 95 || transform.position.z < -80 || transform.position.z > 95)
+        //      {
+
+        //          // Movementin poisto
+        //          rb.linearVelocity = Vector3.zero;     
+        //          rb.angularVelocity = Vector3.zero;
+
+        //          // positio ja rotaatio resettaus
+        //          transform.position = Vector3.zero;
+        //          transform.rotation = Quaternion.identity;
+
+        //          // ohjausjutut nolliks
+        //          throttle = 0f;
+        //          pitch = 0f;
+        //          yaw = 0f;
+        //          roll = 0f;
+
+        //          // lentoanimaatio pois
+        //          animator.SetBool("Flying", false);
+        //      }
     }
 
 }
