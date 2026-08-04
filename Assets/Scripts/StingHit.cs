@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class StingHit : MonoBehaviour
 {
-    bool stuck = false;
+    public static bool StuckOnHuman = false;
 	Rigidbody rb;
 	Vector3 direction;
 	float cooldown = 2f;
@@ -25,7 +25,7 @@ public class StingHit : MonoBehaviour
         // jos löytyy suckable componentti niin edetää
         if (IsSuckable != null && cooldownTimer <= 0)
         {
-			stuck = true;
+            StuckOnHuman = true;
 			// haetaan hyttysen body ja jähmetetään
 	
 			rb.isKinematic = true;
@@ -46,7 +46,7 @@ public class StingHit : MonoBehaviour
     {
 		cooldownTimer -= Time.deltaTime;
 
-		if (stuck)
+		if (StuckOnHuman)
 		{
 			//Aloteitaan suki suki
 			if (Input.GetKey(KeyCode.Space))
@@ -60,7 +60,7 @@ public class StingHit : MonoBehaviour
 			// lähdetään irti
 			else if (Input.GetKey(KeyCode.LeftShift))
 			{
-				stuck = false;
+                StuckOnHuman = false;
 
 				//Siirretään hyty kaummaks
 				transform.parent.position += direction * 0.1f;

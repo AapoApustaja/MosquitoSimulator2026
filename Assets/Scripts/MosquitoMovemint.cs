@@ -17,12 +17,22 @@ public class MosquitoMovemint : MonoBehaviour
 	private float pitch;
 	private float yaw;
 
+    private float normalSpeed = 8.0f;
+    private float normalTurnspeed = 40.0f;
+
     // 1 = Normaali 2 = Helilupteri 3 = let him cook
 
-	// Start is called once before the first execution of Update after the MonoBehaviour is created
-	void Start()
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
     {
         animator = GetComponent<Animator>();
+
+        if (SettingsMenu.MovementType == 1)
+        {
+            rb.useGravity = false;
+            rb.freezeRotation = true;
+            animator.SetBool("Flying", true);
+        }
     }
 
     // Rigidbodyyn k‰ytet‰‰ fixed
@@ -30,36 +40,42 @@ public class MosquitoMovemint : MonoBehaviour
     {
 		CheckBoundaries();
 
-        UniversalInputs();
-
-        // Normaali movementti
-        //if (SettingsMenu.MovementType == 1)
-        //{
-        //    HandleInputs();
-        //}
-
-        // Helikopteri
-        if (SettingsMenu.MovementType == 2)
+        // Movementti ei toimi jos kiinni ihmisess‰
+        if(!StingHit.StuckOnHuman)
         {
-            HelicopterInputs();
-        }
+            UniversalInputs();
 
-        // future joku mix
-        //if (SettingsMenu.MovementType == 32)
-        //{
-        //    HandleInputs();
-        //}
+            // Normaali movementti
+            if (SettingsMenu.MovementType == 1)
+            {
+                NormalInputs();
+            }
+
+            // Helikopteri
+            if (SettingsMenu.MovementType == 2)
+            {
+                HelicopterInputs();
+            }
+
+            // future joku mix
+            //if (SettingsMenu.MovementType == 32)
+            //{
+            //    HandleInputs();
+            //}
+        }
 
     }
 
 	private void FixedUpdate()
 	{
-		rb.AddForce(transform.up * throttle, ForceMode.Impulse);
+        if (SettingsMenu.MovementType == 2)
+        {
+            rb.AddForce(transform.up * throttle, ForceMode.Impulse);
 
-		rb.AddTorque(transform.right * pitch * responsiviness);
-		rb.AddTorque(-transform.forward * roll * responsiviness);
-		rb.AddTorque(transform.up * yaw * responsiviness);
-
+            rb.AddTorque(transform.right * pitch * responsiviness);
+            rb.AddTorque(-transform.forward * roll * responsiviness);
+            rb.AddTorque(transform.up * yaw * responsiviness);
+        }
 
 	}
 
@@ -75,17 +91,90 @@ public class MosquitoMovemint : MonoBehaviour
             if (rb.useGravity)
             {
                 rb.useGravity = false;
+
+                if (SettingsMenu.MovementType == 1)
+                {
+                    animator.SetBool("Flying", true);
+                }
             }
 
             else
             {
                 rb.useGravity = true;
+
+                if(SettingsMenu.MovementType == 1)
+                {
+                    animator.SetBool("Flying", false);
+                }
+
+                else
+                {
+                    animator.SetBool("Flying", true);
+                }
+
+                
             }
+        }
+        
+    }
+    /// <summary>
+    /// Normaalit
+    /// </summary>
+    private void NormalInputs()
+    {
+        // Hakee input pystyss‰ ja sivuttain
+        float verticalInput = Input.GetAxis("Vertical");
+        float HorizontalInput = Input.GetAxis("Horizontal");
+
+        // liikutellaa
+        transform.Translate(Vector3.forward * verticalInput * normalSpeed * Time.deltaTime);
+        transform.Translate(Vector3.right * HorizontalInput * normalSpeed * Time.deltaTime);
+
+        // Ylˆsp‰in kun space
+        if (Input.GetKey(KeyCode.Space))
+        {
+            transform.Translate(Vector3.up * normalSpeed * Time.deltaTime);
+        }
+
+        // alasp‰in ku control
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            transform.Translate(Vector3.down * normalSpeed * Time.deltaTime);
+        }
+
+        //k‰‰ntyy ylˆs
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            transform.Rotate(Vector3.right, -normalTurnspeed * Time.deltaTime);
+        }
+
+        // K‰‰ntyy alas
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+
+            transform.Rotate(Vector3.right, normalTurnspeed * Time.deltaTime);
+        }
+
+        //k‰‰ntyy oikealle
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Rotate(Vector3.up, normalTurnspeed * Time.deltaTime, Space.World);
+        }
+
+        // K‰‰ntyy vasemmalle
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Rotate(Vector3.up, -normalTurnspeed * Time.deltaTime, Space.World);
         }
     }
 
-	private void HelicopterInputs()
+
+    /// <summary>
+    /// Helikopteri
+    /// </summary>
+    private void HelicopterInputs()
 	{
+
 		roll = Input.GetAxis("Horizontal");
 		pitch = Input.GetAxis("Vertical");
 		yaw = Input.GetAxis("Yaw");
@@ -103,10 +192,25 @@ public class MosquitoMovemint : MonoBehaviour
 
 			// Lento pois
 			animator.SetBool("Flying", false);
-		}
+
+            // Lentoanimaatio jos painovoima pois p‰‰lt‰
+            if (!rb.useGravity)
+            {
+                animator.SetBool("Flying", true);
+            }
+            else
+            {
+                animator.SetBool("Flying", false);
+            }
+        }
 		throttle = Mathf.Clamp(throttle, -100f, 100f);
 
-	}
+        print("roll: " + roll);
+        print("pitch: " + pitch);
+        print("yaw:" + yaw);
+        print(throttle);
+
+    }
 
 	/// <summary>
 	/// Tarkistaa rajat kartasta ja est‰‰ p‰‰syn
