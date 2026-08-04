@@ -133,13 +133,13 @@ public class MosquitoMovemint : MonoBehaviour
         // Ylöspäin kun space
         if (Input.GetKey(KeyCode.Space))
         {
-            transform.Translate(Vector3.up * normalSpeed * Time.deltaTime);
+            transform.Translate(Vector3.up * normalSpeed * Time.deltaTime, Space.World);
         }
 
         // alaspäin ku control
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            transform.Translate(Vector3.down * normalSpeed * Time.deltaTime);
+            transform.Translate(Vector3.down * normalSpeed * Time.deltaTime, Space.World);
         }
 
         //kääntyy ylös
@@ -158,13 +158,13 @@ public class MosquitoMovemint : MonoBehaviour
         //kääntyy oikealle
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.Rotate(Vector3.up, normalTurnspeed * Time.deltaTime, Space.World);
+            transform.Rotate(Vector3.up, normalTurnspeed* 1.5f * Time.deltaTime, Space.World);
         }
 
         // Kääntyy vasemmalle
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.Rotate(Vector3.up, -normalTurnspeed * Time.deltaTime, Space.World);
+            transform.Rotate(Vector3.up, -normalTurnspeed*1.5f * Time.deltaTime, Space.World);
         }
     }
 

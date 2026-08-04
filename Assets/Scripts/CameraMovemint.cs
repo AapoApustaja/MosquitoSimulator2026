@@ -16,17 +16,22 @@ public class CameraMovemint : MonoBehaviour
     // Update is called once per frame  
     void Update()
     {
-        if(SettingsMenu.MovementType == 1)
+
+    }
+
+    private void LateUpdate()
+    {
+        if (SettingsMenu.MovementType == 1)
         {
             standardCamera();
         }
 
-        if(SettingsMenu.MovementType == 2)
+        if (SettingsMenu.MovementType == 2)
         {
             helicopterCamera();
         }
     }
-    
+
     private void standardCamera()
     {
         transform.position = player.position + player.rotation * offset;
