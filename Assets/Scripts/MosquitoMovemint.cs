@@ -8,8 +8,8 @@ public class MosquitoMovemint : MonoBehaviour
 
 	private Animator animator;
 
-	[SerializeField] private float responsiviness = 50f;
-	[SerializeField] private float throttleAmount = 100f;
+	[SerializeField] private float responsiviness;
+	[SerializeField] private float throttleAmount;
 
 	private float throttle;
 	private Vector3 rotationTorque;

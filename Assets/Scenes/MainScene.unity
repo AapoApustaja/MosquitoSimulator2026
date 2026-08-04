@@ -4380,8 +4380,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MosquitoMovemint
   rb: {fileID: 1385860509}
-  responsiviness: 12
-  throttleAmount: 200
+  responsiviness: 0.3
+  throttleAmount: 8
 --- !u!54 &1385860509
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4390,9 +4390,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1385860507}
   serializedVersion: 5
-  m_Mass: 350
+  m_Mass: 10
   m_LinearDamping: 1
-  m_AngularDamping: 1
+  m_AngularDamping: 1.6
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
