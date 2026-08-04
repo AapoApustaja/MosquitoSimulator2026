@@ -17,6 +17,8 @@ public class MosquitoMovemint : MonoBehaviour
 	private float pitch;
 	private float yaw;
 
+    // 1 = Normaali 2 = Helilupteri 3 = let him cook
+
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
     {
@@ -28,8 +30,27 @@ public class MosquitoMovemint : MonoBehaviour
     {
 		CheckBoundaries();
 
-		HandleInputs();
-	}
+        UniversalInputs();
+
+        // Normaali movementti
+        //if (SettingsMenu.MovementType == 1)
+        //{
+        //    HandleInputs();
+        //}
+
+        // Helikopteri
+        if (SettingsMenu.MovementType == 2)
+        {
+            HelicopterInputs();
+        }
+
+        // future joku mix
+        //if (SettingsMenu.MovementType == 32)
+        //{
+        //    HandleInputs();
+        //}
+
+    }
 
 	private void FixedUpdate()
 	{
@@ -39,9 +60,31 @@ public class MosquitoMovemint : MonoBehaviour
 		rb.AddTorque(-transform.forward * roll * responsiviness);
 		rb.AddTorque(transform.up * yaw * responsiviness);
 
+
 	}
 
-	private void HandleInputs()
+    /// <summary>
+    /// Inputit jotka menee kaikkiin
+    /// </summary>
+    private void UniversalInputs()
+    {
+
+        // Painovoima p‰‰lle pois
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            if (rb.useGravity)
+            {
+                rb.useGravity = false;
+            }
+
+            else
+            {
+                rb.useGravity = true;
+            }
+        }
+    }
+
+	private void HelicopterInputs()
 	{
 		roll = Input.GetAxis("Horizontal");
 		pitch = Input.GetAxis("Vertical");
