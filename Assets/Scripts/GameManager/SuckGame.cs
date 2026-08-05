@@ -34,19 +34,35 @@ public class SuckGame : MonoBehaviour
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
     {
-        time.maxValue = MaxTime;
-        pressure.maxValue = MaxPressure;
-        capacity.maxValue = MaxCapacity;
-        bloodAmount.maxValue = MaxBloodAmount;
-		bodycapacity_.SetActive(true);
-		Timer_.SetActive(true);
-		BloodAmount_.SetActive(true);
-		suckpressure_.SetActive(true);
-		suckGaem.enabled = true;
+        SetupGame();
 	}
 
 	private void OnEnable()
 	{
+        SetupGame();
+	}
+
+	private void CloseGame()
+    {
+		bodycapacity_.SetActive(false);
+		Timer_.SetActive(false);
+		suckpressure_.SetActive(false);
+		suckGameobj.SetActive(false);
+		suckGaem.enabled = false;
+	}
+
+	private void loseGame()
+	{
+        // joku häviäminenen
+		bodycapacity_.SetActive(false);
+		Timer_.SetActive(false);
+		suckpressure_.SetActive(false);
+		suckGameobj.SetActive(false);
+		suckGaem.enabled = false;
+	}
+
+	private void SetupGame()
+    {
 		time.maxValue = MaxTime;
 		pressure.maxValue = MaxPressure;
 		capacity.maxValue = MaxCapacity;
@@ -56,15 +72,6 @@ public class SuckGame : MonoBehaviour
 		BloodAmount_.SetActive(true);
 		suckpressure_.SetActive(true);
 		suckGaem.enabled = true;
-	}
-
-	private void loseGame()
-    {
-		bodycapacity_.SetActive(false);
-		Timer_.SetActive(false);
-		suckpressure_.SetActive(false);
-		suckGameobj.SetActive(false);
-		suckGaem.enabled = false;
 	}
 
     // Update is called once per frame
@@ -86,6 +93,11 @@ public class SuckGame : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
+			CloseGame();
+        }
+
+        if(time.value == MaxTime)
+        {
             loseGame();
         }
 
@@ -98,7 +110,7 @@ public class SuckGame : MonoBehaviour
 
         if(CoolDownTimer <= 0f)
         {
-            time.value += 0.5f;
+            time.value += 0.8f;
  
             CoolDownTimer = Cooldown;
         }
