@@ -9,6 +9,9 @@ public class StingHit : MonoBehaviour
 	float cooldown = 2f;
 	float cooldownTimer = 0f;
 
+	public SuckGame Suckminigame;
+	public GameObject suckminigaem;
+
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
@@ -51,8 +54,9 @@ public class StingHit : MonoBehaviour
 			//Aloteitaan suki suki
 			if (Input.GetKey(KeyCode.Space))
 			{
-				// tähä jotai hienoo ny vaan toi läbäl
-				transform.parent.localScale += new Vector3 (0.001f,0.001f,0.001f);
+				suckminigaem.SetActive(true);
+				Suckminigame.enabled = true;
+				
 				
 			}
 
