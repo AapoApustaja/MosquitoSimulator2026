@@ -20,6 +20,15 @@ public class MosquitoMovemint : MonoBehaviour
     private float normalSpeed = 8.0f;
     private float normalTurnspeed = 40.0f;
 
+    void Awake()
+    {
+        // vsync pois että frameratecpa toimii
+        QualitySettings.vSyncCount = 0;
+    
+        // 60fps cap
+        Application.targetFrameRate = 60;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -66,6 +75,7 @@ public class MosquitoMovemint : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+
         if (ControlsMenu.MovementType == 2)
         {
             rb.AddForce(transform.up * throttle, ForceMode.Impulse);
@@ -120,27 +130,36 @@ public class MosquitoMovemint : MonoBehaviour
     /// </summary>
     private void NormalInputs()
     {
-        // Hakee input pystyssä ja sivuttain
-        float verticalInput = Input.GetAxis("Vertical");
-        float HorizontalInput = Input.GetAxis("Horizontal");
+        float forwardInput = Input.GetAxis("Vertical");
+        float sidewaysInput = Input.GetAxis("Horizontal");
 
-        // liikutellaa
-        transform.Translate(Vector3.forward * verticalInput * normalSpeed * Time.deltaTime);
-        transform.Translate(Vector3.right * HorizontalInput * normalSpeed * Time.deltaTime);
+        // movementti joka kattoo missä objekti o
+        Vector3 velocity = transform.forward * forwardInput * normalSpeed + transform.right * sidewaysInput * normalSpeed;
 
-        // Ylöspäin kun space
-        if (Input.GetKey(KeyCode.Space))
+        // painovoima check
+        if (rb.useGravity)
         {
-            transform.Translate(Vector3.up * normalSpeed * Time.deltaTime, Space.World);
+            velocity.y = rb.linearVelocity.y;
+        }
+        else
+        {
+            // ylös space
+            if (Input.GetKey(KeyCode.Space))
+            {
+                velocity += Vector3.up * normalSpeed;
+            }
+
+            // alas control
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                velocity += Vector3.down * normalSpeed;
+            }
         }
 
-        // alaspäin ku control
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            transform.Translate(Vector3.down * normalSpeed * Time.deltaTime, Space.World);
-        }
+        // movementin laitto
+        rb.linearVelocity = velocity;
 
-        //kääntyy ylös
+        // kääntyy ylös
         if (Input.GetKey(KeyCode.UpArrow))
         {
             transform.Rotate(Vector3.right, -normalTurnspeed * Time.deltaTime);
@@ -156,14 +175,15 @@ public class MosquitoMovemint : MonoBehaviour
         //kääntyy oikealle
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.Rotate(Vector3.up, normalTurnspeed* 1.5f * Time.deltaTime, Space.World);
+            transform.Rotate(Vector3.up, normalTurnspeed * 2.0f * Time.deltaTime, Space.World);
         }
 
         // Kääntyy vasemmalle
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.Rotate(Vector3.up, -normalTurnspeed*1.5f * Time.deltaTime, Space.World);
+            transform.Rotate(Vector3.up, -normalTurnspeed * 2.0f * Time.deltaTime, Space.World);
         }
+
     }
 
 
