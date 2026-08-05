@@ -25,7 +25,7 @@ public class MosquitoMovemint : MonoBehaviour
     {
         animator = GetComponent<Animator>();
 
-        if (SettingsMenu.MovementType == 1)
+        if (ControlsMenu.MovementType == 1)
         {
             rb.useGravity = false;
             rb.freezeRotation = true;
@@ -42,15 +42,15 @@ public class MosquitoMovemint : MonoBehaviour
         if(!StingHit.StuckOnHuman)
         {
             UniversalInputs();
-
+            
             // Normaali movementti
-            if (SettingsMenu.MovementType == 1)
+            if (ControlsMenu.MovementType == 1)
             {
                 NormalInputs();
             }
 
             // Helikopteri
-            if (SettingsMenu.MovementType == 2)
+            if (ControlsMenu.MovementType == 2)
             {
                 HelicopterInputs();
             }
@@ -66,7 +66,7 @@ public class MosquitoMovemint : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-        if (SettingsMenu.MovementType == 2)
+        if (ControlsMenu.MovementType == 2)
         {
             rb.AddForce(transform.up * throttle, ForceMode.Impulse);
 
@@ -90,7 +90,7 @@ public class MosquitoMovemint : MonoBehaviour
             {
                 rb.useGravity = false;
 
-                if (SettingsMenu.MovementType == 1)
+                if (ControlsMenu.MovementType == 1)
                 {
                     animator.SetBool("Flying", true);
                 }
@@ -100,7 +100,7 @@ public class MosquitoMovemint : MonoBehaviour
             {
                 rb.useGravity = true;
 
-                if(SettingsMenu.MovementType == 1)
+                if(ControlsMenu.MovementType == 1)
                 {
                     animator.SetBool("Flying", false);
                 }

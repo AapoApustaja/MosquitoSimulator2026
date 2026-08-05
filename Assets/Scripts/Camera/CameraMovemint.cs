@@ -21,12 +21,12 @@ public class CameraMovemint : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (SettingsMenu.MovementType == 1)
+        if (ControlsMenu.MovementType == 1)
         {
             standardCamera();
         }
 
-        if (SettingsMenu.MovementType == 2)
+        if (ControlsMenu.MovementType == 2)
         {
             helicopterCamera();
         }

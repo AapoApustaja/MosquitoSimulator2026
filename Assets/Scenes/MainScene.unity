@@ -484,7 +484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590302b18b038384381428a88ec363c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Suckable
-  Hyty: {fileID: 0}
+  Hyty: {fileID: 1385860507}
 --- !u!1 &95998216
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,7 +946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590302b18b038384381428a88ec363c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Suckable
-  Hyty: {fileID: 0}
+  Hyty: {fileID: 1385860507}
 --- !u!1001 &171535922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1549,7 +1549,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 330585543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6312107adced4474286e5a4f04f28f40, type: 3}
+  m_Script: {fileID: 11500000, guid: 1850aeb85bae3a843a90cebc3094615e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraMovemint
   player: {fileID: 1385860510}
@@ -2072,7 +2072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590302b18b038384381428a88ec363c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Suckable
-  Hyty: {fileID: 0}
+  Hyty: {fileID: 1385860507}
 --- !u!65 &428085742
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2251,7 +2251,7 @@ PrefabInstance:
       addedObject: {fileID: 1385860509}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6985b37558de4c743ae0997ee6656064, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1385860508}
+      addedObject: {fileID: 1385860513}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6985b37558de4c743ae0997ee6656064, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1385860511}
@@ -6710,7 +6710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590302b18b038384381428a88ec363c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Suckable
-  Hyty: {fileID: 0}
+  Hyty: {fileID: 1385860507}
 --- !u!1001 &1356563014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7027,21 +7027,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6985b37558de4c743ae0997ee6656064, type: 3}
   m_PrefabInstance: {fileID: 516559009}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1385860508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1385860507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 966949bcf00e106438d7be1dac622508, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MosquitoMovemint
-  rb: {fileID: 1385860509}
-  responsiviness: 0.3
-  throttleAmount: 8
 --- !u!54 &1385860509
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7117,6 +7102,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1385860513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385860507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 966949bcf00e106438d7be1dac622508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MosquitoMovemint
+  rb: {fileID: 1385860509}
+  responsiviness: 0.3
+  throttleAmount: 8
 --- !u!65 &1386535111
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7747,7 +7747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590302b18b038384381428a88ec363c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Suckable
-  Hyty: {fileID: 0}
+  Hyty: {fileID: 1385860507}
 --- !u!1 &1629128299 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b217a9ebea055f84ea44bdc2c169ce0b, type: 3}
