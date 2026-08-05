@@ -20,8 +20,6 @@ public class MosquitoMovemint : MonoBehaviour
     private float normalSpeed = 8.0f;
     private float normalTurnspeed = 40.0f;
 
-    // 1 = Normaali 2 = Helilupteri 3 = let him cook
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -204,12 +202,6 @@ public class MosquitoMovemint : MonoBehaviour
             }
         }
 		throttle = Mathf.Clamp(throttle, -100f, 100f);
-
-        print("roll: " + roll);
-        print("pitch: " + pitch);
-        print("yaw:" + yaw);
-        print(throttle);
-
     }
 
 	/// <summary>
