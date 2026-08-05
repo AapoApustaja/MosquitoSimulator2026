@@ -45,6 +45,28 @@ public class SuckGame : MonoBehaviour
 		suckGaem.enabled = true;
 	}
 
+	private void OnEnable()
+	{
+		time.maxValue = MaxTime;
+		pressure.maxValue = MaxPressure;
+		capacity.maxValue = MaxCapacity;
+		bloodAmount.maxValue = MaxBloodAmount;
+		bodycapacity_.SetActive(true);
+		Timer_.SetActive(true);
+		BloodAmount_.SetActive(true);
+		suckpressure_.SetActive(true);
+		suckGaem.enabled = true;
+	}
+
+	private void loseGame()
+    {
+		bodycapacity_.SetActive(false);
+		Timer_.SetActive(false);
+		suckpressure_.SetActive(false);
+		suckGameobj.SetActive(false);
+		suckGaem.enabled = false;
+	}
+
     // Update is called once per frame
     void Update()
     {
@@ -56,15 +78,16 @@ public class SuckGame : MonoBehaviour
 
         if(capacity.value == MaxCapacity)
         {
-            bodycapacity_.SetActive(false);
-            Timer_.SetActive(false);
-            suckpressure_.SetActive(false);
-			suckGameobj.SetActive(false);
-			suckGaem.enabled = false;
 
+            loseGame();
 
 
 		}
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            loseGame();
+        }
 
 		if (Input.GetKey(KeyCode.Space) && pressure.value <= MaxPressure)
         {
