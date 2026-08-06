@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/InsideHouseScene.unity
     guid: a17ba46b0a6fffb4ab36e2de3417ad35
+  - enabled: 1
+    path: Assets/Scenes/BaseScene.unity
+    guid: 4cea9b44de34e8042a2ac4fdf43cfd55
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
