@@ -20,6 +20,7 @@ public class MosquitoMovemint : MonoBehaviour
     private float normalSpeed = 8.0f;
     private float normalTurnspeed = 40.0f;
 
+
     void Awake()
     {
         // vsync pois että frameratecpa toimii
@@ -48,7 +49,7 @@ public class MosquitoMovemint : MonoBehaviour
 		CheckBoundaries();
 
         // Movementti ei toimi jos kiinni ihmisessä
-        if(!StingHit.StuckOnHuman)
+        if (!StingHit.StuckOnHuman)
         {
             UniversalInputs();
             
