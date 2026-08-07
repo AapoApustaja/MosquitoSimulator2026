@@ -17,7 +17,7 @@ public class MosquitoMovemint : MonoBehaviour
 	private float pitch;
 	private float yaw;
 
-    private float normalSpeed = 8.0f;
+    private float normalSpeed = 5.0f;
     private float normalTurnspeed = 40.0f;
 
 
@@ -48,11 +48,24 @@ public class MosquitoMovemint : MonoBehaviour
     {
 		CheckBoundaries();
 
+
+
+            // future joku mix
+            //if (SettingsMenu.MovementType == 32)
+            //{
+            //    HandleInputs();
+            //}
+
+    }
+
+	private void FixedUpdate()
+	{
+
         // Movementti ei toimi jos kiinni ihmisessä
         if (!StingHit.StuckOnHuman)
         {
             UniversalInputs();
-            
+
             // Normaali movementti
             if (ControlsMenu.MovementType == 1)
             {
@@ -64,18 +77,7 @@ public class MosquitoMovemint : MonoBehaviour
             {
                 HelicopterInputs();
             }
-
-            // future joku mix
-            //if (SettingsMenu.MovementType == 32)
-            //{
-            //    HandleInputs();
-            //}
         }
-
-    }
-
-	private void FixedUpdate()
-	{
 
         if (ControlsMenu.MovementType == 2)
         {
