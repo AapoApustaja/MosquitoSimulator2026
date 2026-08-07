@@ -2039,8 +2039,8 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 0
-  smoothTime: 0.15
-  rotationSpeed: 8
+  smoothTime: 0.3
+  rotationSpeed: 25
 --- !u!1 &341920974
 GameObject:
   m_ObjectHideFlags: 0
