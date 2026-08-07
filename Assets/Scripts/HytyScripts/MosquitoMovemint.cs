@@ -10,6 +10,8 @@ public class MosquitoMovemint : MonoBehaviour
 
 	[SerializeField] private float responsiviness;
 	[SerializeField] private float throttleAmount;
+	[SerializeField] private AudioClip HytySound;
+
 
 	private float throttle;
 	private Vector3 rotationTorque;
@@ -149,11 +151,18 @@ public class MosquitoMovemint : MonoBehaviour
             // ylös space
             if (Input.GetKey(KeyCode.Space))
             {
-                velocity += Vector3.up * normalSpeed;
+				velocity += Vector3.up * normalSpeed;
             }
 
-            // alas control
-            if (Input.GetKey(KeyCode.LeftControl))
+            //meemi
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+				SoundFxManager.instance.PlaySoundFxClip(HytySound, transform, 1f);
+
+			}
+
+			// alas control
+			if (Input.GetKey(KeyCode.LeftControl))
             {
                 velocity += Vector3.down * normalSpeed;
             }

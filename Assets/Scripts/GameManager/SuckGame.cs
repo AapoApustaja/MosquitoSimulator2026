@@ -59,6 +59,10 @@ public class SuckGame : MonoBehaviour
 		suckpressure_.SetActive(false);
 		suckGameobj.SetActive(false);
 		suckGaem.enabled = false;
+		time.value = 0;
+		pressure.value = 0;
+		capacity.value = 0;
+		bloodAmount.value = 0;
 	}
 
 	private void SetupGame()
@@ -108,7 +112,7 @@ public class SuckGame : MonoBehaviour
 
 		}
 
-        if(CoolDownTimer <= 0f)
+        if(CoolDownTimer <= 0f)     
         {
             time.value += 0.8f;
  
