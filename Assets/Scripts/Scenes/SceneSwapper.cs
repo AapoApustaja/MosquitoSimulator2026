@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 
 public class SceneSwapper : MonoBehaviour
 {
-    private bool showBaseEnter;
+    private bool showEnterText;
 
     private GUIStyle labelStyle;
 
@@ -16,6 +16,10 @@ public class SceneSwapper : MonoBehaviour
     [SerializeField] private float fadeDuration = 1.0f;
 
     [SerializeField] private bool fadeIn = false;
+
+    [SerializeField] private int SceneIndex = 0;
+
+    [SerializeField] private string enterText = "Press E to enter";
 
     public Image image;
 
@@ -39,9 +43,9 @@ public class SceneSwapper : MonoBehaviour
 
     private void Update()
     {
-        if (showBaseEnter && Input.GetKeyDown(KeyCode.E))
+        if (showEnterText && Input.GetKeyDown(KeyCode.E))
         {
-            StartCoroutine(FadeAndLoadScene(3));
+            StartCoroutine(FadeAndLoadScene(SceneIndex));
         }
     }
 
@@ -49,7 +53,7 @@ public class SceneSwapper : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            showBaseEnter = true;
+            showEnterText = true;
         }
     }
 
@@ -57,16 +61,16 @@ public class SceneSwapper : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            showBaseEnter = false;
+            showEnterText = false;
         }
     }
 
     void OnGUI()
     {
         // Base enter teksti
-        if (showBaseEnter)
+        if (showEnterText)
         {
-            GUI.Label(new Rect(Screen.width / 2, Screen.height / 1.3f, 100, 20), "Press E to enter base", labelStyle);
+            GUI.Label(new Rect(Screen.width / 2, Screen.height / 1.3f, 100, 20), enterText, labelStyle);
         }
 
     }

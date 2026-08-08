@@ -1356,6 +1356,8 @@ MonoBehaviour:
   canvasGroup: {fileID: 219481124}
   fadeDuration: 1
   fadeIn: 1
+  SceneIndex: 0
+  enterText: Press E to enter
   image: {fileID: 0}
 --- !u!225 &219481124
 CanvasGroup:
@@ -4632,6 +4634,8 @@ MonoBehaviour:
   canvasGroup: {fileID: 219481124}
   fadeDuration: 1
   fadeIn: 1
+  SceneIndex: 3
+  enterText: Press E to enter base
   image: {fileID: 0}
 --- !u!65 &763559331
 BoxCollider:

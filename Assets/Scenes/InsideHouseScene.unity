@@ -3781,6 +3781,8 @@ MonoBehaviour:
   canvasGroup: {fileID: 772839194}
   fadeDuration: 1
   fadeIn: 1
+  SceneIndex: 0
+  enterText: Press E to enter
   image: {fileID: 0}
 --- !u!225 &772839194
 CanvasGroup:
@@ -5755,6 +5757,8 @@ MonoBehaviour:
   canvasGroup: {fileID: 772839194}
   fadeDuration: 1
   fadeIn: 1
+  SceneIndex: 3
+  enterText: Press E to enter base
   image: {fileID: 0}
 --- !u!1 &1250783790
 GameObject:
