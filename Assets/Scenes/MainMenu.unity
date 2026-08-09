@@ -903,7 +903,7 @@ GameObject:
   - component: {fileID: 303958032}
   - component: {fileID: 303958033}
   m_Layer: 5
-  m_Name: SensMenu
+  m_Name: VolumeMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2855,8 +2855,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2129047389}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 1838744819}
+        m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: Options
         m_Mode: 1
         m_Arguments:
@@ -2959,7 +2959,7 @@ MonoBehaviour:
   MainMenus: {fileID: 2129047387}
   SettingsMenus: {fileID: 1838744817}
   ControlsMenus: {fileID: 1489473098}
-  SensMenus: {fileID: 303958031}
+  VolumeMenus: {fileID: 0}
 --- !u!1 &1861651241
 GameObject:
   m_ObjectHideFlags: 0

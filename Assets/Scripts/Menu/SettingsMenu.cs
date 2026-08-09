@@ -6,14 +6,21 @@ public class SettingsMenu : MonoBehaviour
 	public GameObject MainMenus;
 	public GameObject SettingsMenus;
 	public GameObject ControlsMenus;
-	public GameObject SensMenus;
+	public GameObject VolumeMenus;
 
 
 
 	public void Sens()
 	{
-		SensMenus.SetActive(true);
+		VolumeMenus.SetActive(true);
 		SettingsMenus.SetActive(false);
+	}
+
+	public void Options()
+	{
+		SettingsMenus.SetActive(true);
+		MainMenus.SetActive(false);
+
 	}
 
 	public void Controls()
