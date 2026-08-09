@@ -4,7 +4,7 @@ public class CameraMovemint : MonoBehaviour
 {
     public Transform player;
 
-    private Vector3 offset = new Vector3(0, 1.0f, -4f);
+    private Vector3 offset = new Vector3(0, 0.75f, -3f);
 
     /// <summary>
     /// Mitkä objektit törmää kameraan (tähän default aina)

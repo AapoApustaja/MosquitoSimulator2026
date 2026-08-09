@@ -6503,8 +6503,8 @@ BoxCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.0000002, y: 15.605361, z: 2.0000002}
-  m_Center: {x: -3.2086994e-24, y: 6.802681, z: 1.25642365e-23}
+  m_Size: {x: 2.0000002, y: 15.218416, z: 2.0000002}
+  m_Center: {x: -7.0410525e-25, y: 6.6092086, z: 1.3748994e-23}
 --- !u!1 &1165782542 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -259972160606440404, guid: 047c5bdd43d329e46a426203de8efe94, type: 3}
