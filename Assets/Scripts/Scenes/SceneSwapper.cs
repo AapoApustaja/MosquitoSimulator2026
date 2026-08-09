@@ -20,7 +20,10 @@ public class SceneSwapper : MonoBehaviour
 
     [SerializeField] private string enterText = "Press E to enter";
 
-    public Image image;
+	[SerializeField] private AudioClip ClickSound;
+
+
+	public Image image;
 
     void Start()
     {
@@ -44,6 +47,7 @@ public class SceneSwapper : MonoBehaviour
     {
         if (showEnterText && Input.GetKeyDown(KeyCode.E))
         {
+            SoundFxManager.instance.PlaySoundFxClip(ClickSound, transform, 1f);
             StartCoroutine(FadeAndLoadScene(SceneIndex));
         }
     }

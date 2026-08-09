@@ -2921,7 +2921,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1838744818
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2959,7 +2959,7 @@ MonoBehaviour:
   MainMenus: {fileID: 2129047387}
   SettingsMenus: {fileID: 1838744817}
   ControlsMenus: {fileID: 1489473098}
-  VolumeMenus: {fileID: 0}
+  VolumeMenus: {fileID: 303958031}
 --- !u!1 &1861651241
 GameObject:
   m_ObjectHideFlags: 0
