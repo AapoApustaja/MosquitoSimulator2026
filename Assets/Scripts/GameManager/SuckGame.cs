@@ -10,6 +10,9 @@ public class SuckGame : MonoBehaviour
     public GameObject suckpressure_;
     public GameObject suckGameobj;
 
+	[SerializeField] private AudioClip GameStart;
+
+
 	public Slider time;
     public Slider pressure;
     public Slider capacity;
@@ -40,6 +43,8 @@ public class SuckGame : MonoBehaviour
 	private void OnEnable()
 	{
         SetupGame();
+        SoundFxManager.instance.PlaySoundFxClip(GameStart, transform, 1f);
+
 	}
 
 	private void CloseGame()
