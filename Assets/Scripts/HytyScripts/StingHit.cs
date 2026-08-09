@@ -29,9 +29,11 @@ public class StingHit : MonoBehaviour
         if (IsSuckable != null && cooldownTimer <= 0)
         {
             StuckOnHuman = true;
-			// haetaan hyttysen body ja jähmetetään
-	
-			rb.isKinematic = true;
+
+			MinigameManager.IsMinigameActive = true;
+            // haetaan hyttysen body ja jähmetetään
+
+            rb.isKinematic = true;
 
 			// Tehdään hytystä toisen objektin lapsi
 			transform.parent.SetParent(other.transform);
@@ -65,9 +67,10 @@ public class StingHit : MonoBehaviour
 			else if (Input.GetKey(KeyCode.LeftShift))
 			{
                 StuckOnHuman = false;
+				MinigameManager.IsMinigameActive = false;
 
-				//Siirretään hyty kaummaks
-				transform.parent.position += direction * 0.1f;
+                //Siirretään hyty kaummaks
+                transform.parent.position += direction * 0.1f;
 
 				//Poistetaan hytyn parent
 				transform.parent.SetParent(null);

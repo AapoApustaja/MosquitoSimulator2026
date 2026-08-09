@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 public class UpgradeMachine : MonoBehaviour
 {
 

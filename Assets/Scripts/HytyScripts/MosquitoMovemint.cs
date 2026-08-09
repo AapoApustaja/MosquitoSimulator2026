@@ -64,7 +64,7 @@ public class MosquitoMovemint : MonoBehaviour
 	{
 
         // Movementti ei toimi jos kiinni ihmisessä
-        if (!StingHit.StuckOnHuman)
+        if (!MinigameManager.IsMinigameActive)
         {
             UniversalInputs();
 

@@ -38,15 +38,19 @@ public class CameraMovemint : MonoBehaviour
     // Kamerat lateupdateen niin ei lagaa
     private void LateUpdate()
     {
-        if (ControlsMenu.MovementType == 1)
+        if (!MinigameManager.IsMinigameActive)
         {
-            standardCamera();
+            if (ControlsMenu.MovementType == 1)
+            {
+                standardCamera();
+            }
+
+            if (ControlsMenu.MovementType == 2)
+            {
+                helicopterCamera();
+            }
         }
 
-        if (ControlsMenu.MovementType == 2)
-        {
-            helicopterCamera();
-        }
     }
 
     /// <summary>

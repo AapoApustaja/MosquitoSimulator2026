@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Hatshop : MonoBehaviour
 {
     private GUIStyle labelStyle;
