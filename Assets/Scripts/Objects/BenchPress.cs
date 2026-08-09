@@ -34,6 +34,7 @@ public class BenchPress : MonoBehaviour
     [SerializeField] private Image BenchFill;
     [SerializeField] private TMP_Text LeaveText;
 
+    [SerializeField] private GameObject canvas;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -48,6 +49,8 @@ public class BenchPress : MonoBehaviour
 
         Timer_.SetActive(false);
         Bench_.SetActive(false);
+        canvas.SetActive(false);
+       
     }
 
     // Update is called once per frame
@@ -115,6 +118,8 @@ public class BenchPress : MonoBehaviour
 
     private void SetupGame()
     {
+        canvas.SetActive(true);
+
         SavePos();
 
         rb.isKinematic = true;
@@ -153,6 +158,7 @@ public class BenchPress : MonoBehaviour
 
         Timer_.SetActive(false);
         Bench_.SetActive(false);
+        canvas.SetActive(false);
 
         RestorePos();
 
