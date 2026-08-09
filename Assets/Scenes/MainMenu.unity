@@ -772,7 +772,7 @@ GameObject:
   - component: {fileID: 255760637}
   - component: {fileID: 255760636}
   m_Layer: 5
-  m_Name: Sensitivity
+  m_Name: VolumeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2514,7 +2514,7 @@ GameObject:
   - component: {fileID: 1661430026}
   - component: {fileID: 1661430025}
   m_Layer: 5
-  m_Name: SensitivityButton
+  m_Name: VolumeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2559,7 +2559,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sensitivity(taijotai)
+  m_text: Volume
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2921,7 +2921,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1838744818
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3356,7 +3356,7 @@ GameObject:
   - component: {fileID: 2072328999}
   - component: {fileID: 2072328998}
   m_Layer: 5
-  m_Name: Controls
+  m_Name: ControlsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

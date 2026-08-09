@@ -12,6 +12,10 @@ public class MosquitoMovemint : MonoBehaviour
 	[SerializeField] private float throttleAmount;
 	[SerializeField] private AudioClip HytySound;
 
+    // jos haluaa k‰ytt‰‰ useampaa
+	//[SerializeField] private AudioClip[] HytySounds;
+
+
 
 	private float throttle;
 	private Vector3 rotationTorque;
@@ -157,9 +161,14 @@ public class MosquitoMovemint : MonoBehaviour
             //meemi
             if (Input.GetKeyDown(KeyCode.Space))
             {
-				SoundFxManager.instance.PlaySoundFxClip(HytySound, transform, 1f);
+                //yksitt‰inen ‰‰ni
+                SoundFxManager.instance.PlaySoundFxClip(HytySound, transform, 1f);
 
-			}
+                // jos haluaa monesta ‰‰nest‰ randomin, pit‰‰ dr‰g‰‰ ‰‰net sinne objektiin.
+                //SoundFxManager.instance.PlayRandomSoundFxClip(HytySounds, transform, 1f);
+
+
+            }
 
 			// alas control
 			if (Input.GetKey(KeyCode.LeftControl))
