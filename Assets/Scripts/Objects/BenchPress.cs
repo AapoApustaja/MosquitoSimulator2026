@@ -10,7 +10,7 @@ public class BenchPress : MonoBehaviour
 
     private bool PlayingGame = false;
 
-    [SerializeField] private GameObject hyty;
+    private GameObject hyty;
     private Vector3 hytyPos;
     private Quaternion hytyRot;
     Rigidbody rb;
@@ -42,6 +42,8 @@ public class BenchPress : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        hyty = GameObject.FindWithTag("Player");
+
         rb = hyty.GetComponent<Rigidbody>();
 
         labelStyle = new GUIStyle();
@@ -195,7 +197,7 @@ public class BenchPress : MonoBehaviour
     private void SetPos()
     {
         // Hyty penkille
-        hyty.transform.position = new Vector3(4.128f, 0.904f, 3.282f);
+        rb.position = new Vector3(4.128f, 0.904f, 3.282f);
         hyty.transform.rotation = Quaternion.Euler(-165.0f, -90.05402f, 0.0f);
 
         // kamera paikoillee
@@ -244,7 +246,7 @@ public class BenchPress : MonoBehaviour
     private void RestorePos()
     {
         rb.position = hytyPos;
-        rb.rotation = hytyRot;
+        hyty.transform.rotation = hytyRot;
 
         bar.transform.localPosition = barPos;
         bar.transform.localRotation = barRot;

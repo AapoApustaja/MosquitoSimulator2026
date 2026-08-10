@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using static UnityEngine.GraphicsBuffer;
 
 public class CameraMovemint : MonoBehaviour
 {
-    public Transform player;
+    private Transform player;
 
     private Vector3 offset = new Vector3(0, 0.75f, -3f);
 
@@ -100,6 +102,26 @@ public class CameraMovemint : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(forward, Vector3.up);
 
         transform.rotation = targetRotation;
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        GameObject mosquito = GameObject.FindWithTag("Player");
+
+        if (mosquito != null)
+        {
+            player = mosquito.transform;
+        }
     }
 
 }

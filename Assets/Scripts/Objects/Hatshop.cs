@@ -35,6 +35,17 @@ public class Hatshop : MonoBehaviour
         }
     }
 
+    // Laittaa hatun hytylle
+    public void SelectHat(string hatName)
+    {
+        Mosquito.Instance.GetComponentInChildren<Hats>().LoadHat(hatName);
+    }
+
+    public void RemoveHat()
+    {
+        Mosquito.Instance.GetComponentInChildren<Hats>().RemoveHat();
+    }
+
     private void SetupShop()
     {
         MinigameManager.IsMinigameActive = true;

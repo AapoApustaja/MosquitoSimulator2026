@@ -1,10 +1,10 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MosquitoMovemint : MonoBehaviour
 {
-
-	public Rigidbody rb;
+    private Rigidbody rb;
 
 	private Animator animator;
 
@@ -15,8 +15,6 @@ public class MosquitoMovemint : MonoBehaviour
     // jos haluaa k‰ytt‰‰ useampaa
 	//[SerializeField] private AudioClip[] HytySounds;
 
-
-
 	private float throttle;
 	private Vector3 rotationTorque;
 	private float roll;
@@ -26,20 +24,55 @@ public class MosquitoMovemint : MonoBehaviour
     private float normalSpeed = 5.0f;
     private float normalTurnspeed = 40.0f;
 
+    int sceneNumber = 0;
 
     void Awake()
     {
+        rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
+
         // vsync pois ett‰ frameratecpa toimii
         QualitySettings.vSyncCount = 0;
-    
+
         // 60fps cap
         Application.targetFrameRate = 60;
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        sceneNumber = scene.buildIndex;
+
+        rb.isKinematic = true;
+
+        if (sceneNumber == 1)
+        {
+            rb.position = new Vector3(23.52028f, 16.9f, 32.58804f);
+            rb.rotation = Quaternion.Euler(0, -47.65f, 0);
+        }
+        else if (sceneNumber == 2)
+        {
+            rb.position = new Vector3(13.04753f, 28.491f, 18.07556f);
+            rb.rotation = Quaternion.Euler(0, -137.65f, 0);
+        }
+        else if (sceneNumber == 3)
+        {
+            rb.position = new Vector3(-0.606f, -0.014f, 7.391f);
+            rb.rotation = Quaternion.Euler(0, -182.65f, 0);
+        }
+
+        rb.isKinematic = false;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        animator = GetComponent<Animator>();
 
         if (ControlsMenu.MovementType == 1)
         {
