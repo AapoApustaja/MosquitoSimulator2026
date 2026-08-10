@@ -9,17 +9,20 @@ public class StingHit : MonoBehaviour
 	float cooldown = 2f;
 	float cooldownTimer = 0f;
 
-	public SuckGame Suckminigame;
-	public GameObject suckminigaem;
+	private SuckGame sukisuki;
+
 
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
     {
 		rb = GetComponentInParent<Rigidbody>();
+		sukisuki = FindAnyObjectByType<SuckGame>(FindObjectsInactive.Include);
+
+
 	}
 
-    // Tarkistetaan pistimen osumat (other antaa tiedot mihin törmätty)
+	// Tarkistetaan pistimen osumat (other antaa tiedot mihin törmätty)
 	private void OnTriggerEnter(Collider other)
 	{
 		// tehdään suckable muuttuja
@@ -35,8 +38,8 @@ public class StingHit : MonoBehaviour
 
             rb.isKinematic = true;
 
-			// Tehdään hytystä toisen objektin lapsi
-			transform.parent.SetParent(other.transform);
+			//// Tehdään hytystä toisen objektin lapsi
+			//transform.parent.SetParent(other.transform);
 
 			//Lasketaan hytyn ja objektin välinen etäisyys
 			direction = transform.parent.position - other.transform.position;
@@ -56,9 +59,9 @@ public class StingHit : MonoBehaviour
 			//Aloteitaan suki suki
 			if (Input.GetKey(KeyCode.Space))
 			{
-				suckminigaem.SetActive(true);
-				Suckminigame.enabled = true;
-				
+
+				sukisuki.gameObject.SetActive(true);
+				sukisuki.enabled = true;
 				
 			}
 

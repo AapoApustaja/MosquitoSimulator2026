@@ -569,7 +569,7 @@ GameObject:
   - component: {fileID: 46570140}
   - component: {fileID: 46570142}
   - component: {fileID: 46570141}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -841,7 +841,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 86580748}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1525,7 +1525,7 @@ GameObject:
   m_Component:
   - component: {fileID: 183963766}
   - component: {fileID: 183963767}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: SuckPressure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1616,7 +1616,7 @@ GameObject:
   - component: {fileID: 184190729}
   - component: {fileID: 184190731}
   - component: {fileID: 184190730}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2501,7 +2501,7 @@ GameObject:
   - component: {fileID: 271223782}
   - component: {fileID: 271223784}
   - component: {fileID: 271223783}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4265,7 +4265,7 @@ GameObject:
   - component: {fileID: 458203046}
   - component: {fileID: 458203048}
   - component: {fileID: 458203047}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7323,7 +7323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 875762390}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7689,8 +7689,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443cc70731a551f43a3cc185e31c72b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StingHit
-  Suckminigame: {fileID: 1012093431}
-  suckminigaem: {fileID: 1012093426}
 --- !u!136 &962851039
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8163,9 +8161,9 @@ GameObject:
   - component: {fileID: 1012093429}
   - component: {fileID: 1012093428}
   - component: {fileID: 1012093431}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: SuckGame
-  m_TagString: Untagged
+  m_TagString: SuckGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9251,7 +9249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1216714591}
   - component: {fileID: 1216714592}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: BodyCapacity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9585,7 +9583,7 @@ GameObject:
   - component: {fileID: 1269466824}
   - component: {fileID: 1269466826}
   - component: {fileID: 1269466825}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10084,7 +10082,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1313558546}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10726,7 +10724,7 @@ GameObject:
   - component: {fileID: 1357405291}
   - component: {fileID: 1357405293}
   - component: {fileID: 1357405292}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11308,7 +11306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1491941837}
   - component: {fileID: 1491941838}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14016,7 +14014,7 @@ GameObject:
   - component: {fileID: 1844220144}
   - component: {fileID: 1844220146}
   - component: {fileID: 1844220145}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14622,7 +14620,7 @@ GameObject:
   - component: {fileID: 1914894461}
   - component: {fileID: 1914894463}
   - component: {fileID: 1914894462}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15815,7 +15813,7 @@ GameObject:
   - component: {fileID: 2136552270}
   - component: {fileID: 2136552272}
   - component: {fileID: 2136552271}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
