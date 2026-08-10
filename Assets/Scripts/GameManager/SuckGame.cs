@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SuckGame : MonoBehaviour
@@ -58,16 +59,11 @@ public class SuckGame : MonoBehaviour
 
 	private void loseGame()
 	{
-        // joku häviäminenen
-		bodycapacity_.SetActive(false);
-		Timer_.SetActive(false);
-		suckpressure_.SetActive(false);
-		suckGameobj.SetActive(false);
-		suckGaem.enabled = false;
-		time.value = 0;
-		pressure.value = 0;
-		capacity.value = 0;
-		bloodAmount.value = 0;
+
+		StingHit.StuckOnHuman = false;
+		MinigameManager.IsMinigameActive = false;
+
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
 	private void SetupGame()
@@ -92,7 +88,7 @@ public class SuckGame : MonoBehaviour
 		capacity.value += pressure.value * pressureMulti;
         bloodAmount.value += pressure.value * bloodAmountMulti;
 
-        if(capacity.value == MaxCapacity)
+        if(capacity.value >= MaxCapacity)
         {
 
             loseGame();
@@ -105,7 +101,7 @@ public class SuckGame : MonoBehaviour
 			CloseGame();
         }
 
-        if(time.value == MaxTime)
+        if(time.value >= MaxTime)
         {
             loseGame();
         }

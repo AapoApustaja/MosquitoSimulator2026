@@ -91,9 +91,9 @@ public class MosquitoMovemint : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-
-        // Movementti ei toimi jos kiinni ihmisessä
-        if (!MinigameManager.IsMinigameActive)
+		
+		// Movementti ei toimi jos kiinni ihmisessä
+		if (!MinigameManager.IsMinigameActive)
         {
             UniversalInputs();
 
