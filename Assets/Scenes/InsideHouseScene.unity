@@ -3864,6 +3864,7 @@ MonoBehaviour:
   BloodAmount_: {fileID: 550170920}
   suckpressure_: {fileID: 70827152}
   suckGameobj: {fileID: 652761566}
+  GameStart: {fileID: 0}
   time: {fileID: 27998234}
   pressure: {fileID: 70827154}
   capacity: {fileID: 216191480}
@@ -4445,6 +4446,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 715671796}
   m_CullTransparentMesh: 1
+--- !u!1 &753137232
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 753137233}
+  - component: {fileID: 753137234}
+  m_Layer: 3
+  m_Name: Hat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &753137233
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753137232}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.048, y: 2.59, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1487378728}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &753137234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753137232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c44e4fec19b1f43b5b671af09cd539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Hats
+  hatParent: {fileID: 753137233}
 --- !u!1 &756068170
 GameObject:
   m_ObjectHideFlags: 0
@@ -4648,6 +4694,7 @@ MonoBehaviour:
   fadeIn: 1
   SceneIndex: 0
   enterText: Press E to enter
+  ClickSound: {fileID: 0}
   image: {fileID: 0}
 --- !u!225 &772839194
 CanvasGroup:
@@ -7230,6 +7277,7 @@ MonoBehaviour:
   fadeIn: 1
   SceneIndex: 3
   enterText: Press E to enter base
+  ClickSound: {fileID: 0}
   image: {fileID: 0}
 --- !u!1 &1250783790
 GameObject:
@@ -12139,6 +12187,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6985b37558de4c743ae0997ee6656064, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2096174639}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6985b37558de4c743ae0997ee6656064, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 753137233}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6985b37558de4c743ae0997ee6656064, type: 3}
       insertIndex: -1
