@@ -7689,8 +7689,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443cc70731a551f43a3cc185e31c72b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StingHit
-  Suckminigame: {fileID: 0}
-  suckminigaem: {fileID: 0}
+  Suckminigame: {fileID: 1012093431}
+  suckminigaem: {fileID: 1012093426}
 --- !u!136 &962851039
 CapsuleCollider:
   m_ObjectHideFlags: 0
