@@ -8,6 +8,8 @@ public class BenchPress : MonoBehaviour
 
     private bool nearObject = false;
 
+    private bool PlayingGame = false;
+
     [SerializeField] private GameObject hyty;
     private Vector3 hytyPos;
     private Quaternion hytyRot;
@@ -56,13 +58,13 @@ public class BenchPress : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (nearObject && !MinigameManager.IsMinigameActive && Input.GetKeyDown(KeyCode.E))
+        if (nearObject && !PlayingGame && Input.GetKeyDown(KeyCode.E))
         {
             SetupGame();
         }
 
         // Itse peli
-        if (MinigameManager.IsMinigameActive)
+        if (PlayingGame)
         {
             // Ajastin
             GameTimer -= Time.deltaTime;
@@ -143,12 +145,14 @@ public class BenchPress : MonoBehaviour
         RepsText.text = "Reps: 0";
         EarlyText.text = " ";
         MinigameManager.IsMinigameActive = true;
+        PlayingGame = true;
 
     }
 
     private void EndGame()
     {
         MinigameManager.IsMinigameActive = false;
+        PlayingGame = false;
 
         if (lowerBarCoroutine != null)
         {
@@ -167,12 +171,12 @@ public class BenchPress : MonoBehaviour
 
     void OnGUI()
     {
-        if (nearObject && !MinigameManager.IsMinigameActive)
+        if (nearObject && !PlayingGame)
         {
             GUI.Label(new Rect(Screen.width / 2, Screen.height / 1.3f, 100, 20), "Press E to Bench press", labelStyle);
         }
 
-        if (MinigameManager.IsMinigameActive)
+        if (PlayingGame)
         {
             GUI.Label(new Rect(Screen.width / 2, Screen.height / 1.3f, 100, 20), "Press Space to bench!", labelStyle);
         }

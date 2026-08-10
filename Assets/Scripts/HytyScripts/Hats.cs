@@ -10,7 +10,7 @@ public class Hats : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        LoadHat("Halo");
+        
     }
 
     // Update is called once per frame
@@ -33,5 +33,13 @@ public class Hats : MonoBehaviour
 
         // hatun luonti
         currentHat = Instantiate(hatPrefab, hatParent, false);
+    }
+
+    public void RemoveHat()
+    {
+        if (currentHat != null)
+        {
+            Destroy(currentHat);
+        }
     }
 }

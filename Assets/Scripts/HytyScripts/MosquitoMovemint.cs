@@ -54,14 +54,6 @@ public class MosquitoMovemint : MonoBehaviour
     {
 		CheckBoundaries();
 
-
-
-            // future joku mix
-            //if (SettingsMenu.MovementType == 32)
-            //{
-            //    HandleInputs();
-            //}
-
     }
 
 	private void FixedUpdate()
