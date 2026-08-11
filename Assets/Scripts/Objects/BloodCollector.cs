@@ -1,13 +1,29 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 public class BloodCollector : MonoBehaviour
 {
+
     private GUIStyle labelStyle;
 
     private bool nearObject = false;
     private bool UsingShop = false;
 
     [SerializeField] private GameObject canvas;
+
+    [SerializeField] private TMP_Text CurrentBloodText;
+    [SerializeField] private Button UnlockButton;
+
+    [SerializeField] private TMP_Text BloodInBankText;
+    [SerializeField] private Button CashOutButton;
+
+    private SuckGame sukisuki;
+
+    private void Awake()
+    {
+        // Voi päivittää verimittaria
+        sukisuki = FindAnyObjectByType<SuckGame>(FindObjectsInactive.Include);
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -31,6 +47,22 @@ public class BloodCollector : MonoBehaviour
         {
             CloseShop();
         }
+
+        if (Mosquito.BloodCollectorUnlocked)
+        {
+            UpdateText();
+        }
+
+    }
+
+    // Lisää massit tilille
+    public void CashOut()
+    {
+        Mosquito.BloodAmount += Mosquito.BloodInBank;
+
+        Mosquito.BloodInBank = 0;
+
+        sukisuki.UpdateBar();
     }
 
     private void SetupShop()
@@ -39,6 +71,23 @@ public class BloodCollector : MonoBehaviour
         UsingShop = true;
 
         canvas.SetActive(true);
+
+        if (Mosquito.BloodCollectorUnlocked)
+        {
+            UnlockButton.gameObject.SetActive(false);
+            BloodInBankText.gameObject.SetActive(true);
+            CashOutButton.gameObject.SetActive(true);
+        }
+
+        else 
+        {
+            UnlockButton.gameObject.SetActive(true);
+            BloodInBankText.gameObject.SetActive(false);
+            CashOutButton.gameObject.SetActive(false);
+
+            UpdateText();
+        }
+
     }
 
     private void CloseShop()
@@ -46,6 +95,37 @@ public class BloodCollector : MonoBehaviour
         canvas.SetActive(false);
         MinigameManager.IsMinigameActive = false;
         UsingShop = false;
+    }
+
+    public void UnlockBloodCollector()
+    {
+        if (Mosquito.BloodAmount >= 100)
+        {
+            Mosquito.BloodCollectorUnlocked = true;
+
+            Mosquito.BloodAmount -= 100;
+
+            UnlockButton.gameObject.SetActive(false);
+
+            BloodInBankText.gameObject.SetActive(true);
+            CashOutButton.gameObject.SetActive(true);
+
+            sukisuki.UpdateBar();
+
+        }
+    }
+
+    private void UpdateText()
+    {
+        if (CurrentBloodText != null)
+        {
+            CurrentBloodText.text = "Current blood: " + (int)Mosquito.BloodAmount;
+        }
+
+        if (BloodInBankText != null)
+        {
+            BloodInBankText.text = "Blood in bank: " + (int)Mosquito.BloodInBank;
+        }
     }
 
     void OnGUI()

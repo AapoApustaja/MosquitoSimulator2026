@@ -6,6 +6,12 @@ public class Mosquito : MonoBehaviour
 
     public static float BloodAmount;
 
+    public static bool BloodCollectorUnlocked = false;
+
+    public static float BloodInBank;
+
+    private float BloodMultiplier = 0.1f;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -17,6 +23,22 @@ public class Mosquito : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
+    }
+
+    private void Update()
+    {
+
+        // Passivinen veren keräys blood collectoriin
+        // Kulkee hytyn mukana
+        if (BloodCollectorUnlocked)
+        {
+            AddBloodToBank();
+        }
+    }
+
+    private void AddBloodToBank()
+    {
+        BloodInBank += Time.deltaTime * BloodMultiplier;
     }
 
     private void OnDestroy()
