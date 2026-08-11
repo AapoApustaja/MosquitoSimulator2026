@@ -72,7 +72,6 @@ public class SuckGame : MonoBehaviour
     // Päivittää verimittarin ku vaihtaa sceneä
     public void UpdateBar()
     {
-        print(Mosquito.BloodAmount);
         bloodAmount.maxValue = MaxBloodAmount;
         bloodAmount.value = Mosquito.BloodAmount;
     }

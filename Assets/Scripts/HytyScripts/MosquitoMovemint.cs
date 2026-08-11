@@ -76,9 +76,8 @@ public class MosquitoMovemint : MonoBehaviour
 
         if (ControlsMenu.MovementType == 1)
         {
-            rb.useGravity = false;
             rb.freezeRotation = true;
-            animator.SetBool("Flying", true);
+            animator.SetBool("Flying", false);
         }
     }
 
@@ -87,6 +86,10 @@ public class MosquitoMovemint : MonoBehaviour
     {
 		CheckBoundaries();
 
+        if (!MinigameManager.IsMinigameActive)
+        {
+            UniversalInputs();
+        }
     }
 
 	private void FixedUpdate()
@@ -95,8 +98,6 @@ public class MosquitoMovemint : MonoBehaviour
 		// Movementti ei toimi jos kiinni ihmisessä
 		if (!MinigameManager.IsMinigameActive)
         {
-            UniversalInputs();
-
             // Normaali movementti
             if (ControlsMenu.MovementType == 1)
             {
