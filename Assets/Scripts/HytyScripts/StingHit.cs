@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StingHit : MonoBehaviour
 {
@@ -10,20 +11,22 @@ public class StingHit : MonoBehaviour
 	float cooldownTimer = 0f;
 
 	private SuckGame sukisuki;
-
-
+	private GameObject sukigo;
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
     {
-		rb = GetComponentInParent<Rigidbody>();
-		sukisuki = FindAnyObjectByType<SuckGame>(FindObjectsInactive.Include);
-
 
 	}
 
-	// Tarkistetaan pistimen osumat (other antaa tiedot mihin törmätty)
-	private void OnTriggerEnter(Collider other)
+    private void Awake()
+    {
+        rb = GetComponentInParent<Rigidbody>();
+        sukisuki = FindAnyObjectByType<SuckGame>(FindObjectsInactive.Include);
+    }
+
+    // Tarkistetaan pistimen osumat (other antaa tiedot mihin törmätty)
+    private void OnTriggerEnter(Collider other)
 	{
 		// tehdään suckable muuttuja
         Suckable IsSuckable = other.GetComponent<Suckable>();
@@ -58,11 +61,15 @@ public class StingHit : MonoBehaviour
 		{
 			//Aloteitaan suki suki
 			if (Input.GetKey(KeyCode.Space))
-			{
+			{ 
+				if (sukisuki == null)
+				{
+                    sukisuki = FindAnyObjectByType<SuckGame>(FindObjectsInactive.Include);
+                }
 
-				sukisuki.gameObject.SetActive(true);
-				sukisuki.enabled = true;
-				
+                    sukisuki.gameObject.SetActive(true);
+                    sukisuki.enabled = true;
+
 			}
 
 
@@ -83,11 +90,6 @@ public class StingHit : MonoBehaviour
 
 				// Cooldown et ei jää kii heti
 				cooldownTimer = cooldown;
-
-		
-
-
-
 
 			}
 		}

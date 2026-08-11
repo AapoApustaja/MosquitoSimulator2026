@@ -4568,7 +4568,7 @@ MonoBehaviour:
   BloodAmount_: {fileID: 550170920}
   suckpressure_: {fileID: 70827152}
   suckGameobj: {fileID: 652761566}
-  GameStart: {fileID: 0}
+  GameStart: {fileID: 8300000, guid: 950ac3d7d2bdca741bd80ff6cf84f323, type: 3}
   time: {fileID: 27998234}
   pressure: {fileID: 70827154}
   capacity: {fileID: 216191480}
@@ -11234,8 +11234,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443cc70731a551f43a3cc185e31c72b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StingHit
-  Suckminigame: {fileID: 0}
-  suckminigaem: {fileID: 0}
 --- !u!136 &1681532237
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -35,7 +35,7 @@ public class MosquitoMovemint : MonoBehaviour
         QualitySettings.vSyncCount = 0;
 
         // 60fps cap
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 60; 
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
