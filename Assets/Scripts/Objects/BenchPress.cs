@@ -197,7 +197,7 @@ public class BenchPress : MonoBehaviour
     private void SetPos()
     {
         // Hyty penkille
-        rb.position = new Vector3(4.128f, 0.904f, 3.282f);
+        hyty.transform.position = new Vector3(4.128f, 0.904f, 3.282f);
         hyty.transform.rotation = Quaternion.Euler(-165.0f, -90.05402f, 0.0f);
 
         // kamera paikoillee
@@ -245,8 +245,12 @@ public class BenchPress : MonoBehaviour
 
     private void RestorePos()
     {
+        rb.freezeRotation = false;
+
         rb.position = hytyPos;
-        hyty.transform.rotation = hytyRot;
+        rb.rotation = hytyRot;
+
+        rb.freezeRotation = true;
 
         bar.transform.localPosition = barPos;
         bar.transform.localRotation = barRot;
