@@ -50,6 +50,9 @@ public class SuckGame : MonoBehaviour
 
 	private void CloseGame()
     {
+        time.value = 0f;
+        capacity.value = 0f;
+        pressure.value = 0f;
 		bodycapacity_.SetActive(false);
 		Timer_.SetActive(false);
 		suckpressure_.SetActive(false);

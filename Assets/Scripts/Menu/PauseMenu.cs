@@ -6,6 +6,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     // Static ni voi k‰ytt‰‰ si muuallaki if(PauseMenu.IsPaused)
     public static bool isPaused;
+    private bool isMenuOpen = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,7 +16,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {       
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape) && !isMenuOpen)
         {
             if(isPaused)
             {
@@ -31,6 +32,7 @@ public class PauseMenu : MonoBehaviour
     public void PauseGame() 
     {
         pauseMenu.SetActive(true);
+        isMenuOpen = true;
         // pys‰ytt‰‰ ajat
         Time.timeScale = 0f;
         isPaused = true;
@@ -39,6 +41,7 @@ public class PauseMenu : MonoBehaviour
 	public void ResumeGame()
 	{
 		pauseMenu.SetActive(false);
+        isMenuOpen = false;
 		// pys‰ytt‰‰ ajat
 		Time.timeScale = 1f;
         isPaused = false;
