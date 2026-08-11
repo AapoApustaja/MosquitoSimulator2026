@@ -191,7 +191,8 @@ public class BloodCollector : MonoBehaviour
 
         if (BloodInBankText != null)
         {
-            BloodInBankText.text = "Blood in bank: " + (int)Mosquito.BloodInBank + " / " + (int)Mosquito.BloodBankCapacity;
+            BloodInBankText.text = "Blood in bank: " + (int)Mosquito.BloodInBank + " / " + (int)Mosquito.BloodBankCapacity
+                + "\nCashing out can go over your maximum blood value";
         }
 
         if (CaUpText != null)

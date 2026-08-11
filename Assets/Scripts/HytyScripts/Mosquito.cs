@@ -24,6 +24,7 @@ public class Mosquito : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
     }
 
     private void Update()
