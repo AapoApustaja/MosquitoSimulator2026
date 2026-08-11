@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class StingHit : MonoBehaviour
 {
@@ -11,7 +10,6 @@ public class StingHit : MonoBehaviour
 	float cooldownTimer = 0f;
 
 	private SuckGame sukisuki;
-	private GameObject sukigo;
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
