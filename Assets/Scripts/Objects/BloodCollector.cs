@@ -9,6 +9,9 @@ public class BloodCollector : MonoBehaviour
     private bool nearObject = false;
     private bool UsingShop = false;
 
+    private float CapacityUpgradeCost = 100;
+    private float LevelUpgradeCost = 100;
+
     [SerializeField] private GameObject canvas;
 
     [SerializeField] private TMP_Text CurrentBloodText;
@@ -17,12 +20,23 @@ public class BloodCollector : MonoBehaviour
     [SerializeField] private TMP_Text BloodInBankText;
     [SerializeField] private Button CashOutButton;
 
+    [SerializeField] private Button CapacityUpgradeButton;
+    private TMP_Text CaUpText;
+
+    [SerializeField] private Button LevelUpgradeButton;
+    private TMP_Text LeUpText;
+
     private SuckGame sukisuki;
 
     private void Awake()
     {
         // Voi päivittää verimittaria
         sukisuki = FindAnyObjectByType<SuckGame>(FindObjectsInactive.Include);
+
+        CaUpText = CapacityUpgradeButton.GetComponentInChildren<TMP_Text>();
+
+        LeUpText = LevelUpgradeButton.GetComponentInChildren<TMP_Text>();
+
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -65,6 +79,41 @@ public class BloodCollector : MonoBehaviour
         sukisuki.UpdateBar();
     }
 
+
+    public void UpgradeCapacity()
+    {
+        CapacityUpgradeCost *= Mosquito.BankCapacityLevel;
+        
+        if (Mosquito.BloodAmount >= CapacityUpgradeCost)
+        {
+            Mosquito.BloodAmount -= CapacityUpgradeCost;
+
+            Mosquito.BankCapacityLevel += 1;
+            Mosquito.BloodBankCapacity += Mosquito.BloodBankCapacity;
+
+            sukisuki.UpdateBar();
+
+            CheckUpgradeLevels();
+        }
+    }
+
+    public void UpgradeBloodRate()
+    {
+        LevelUpgradeCost *= Mosquito.BloodBankLevel;
+
+        if (Mosquito.BloodAmount >=  LevelUpgradeCost)
+        {
+            Mosquito.BloodAmount -= LevelUpgradeCost;
+
+            Mosquito.BloodBankLevel += 1;
+            Mosquito.BloodMultiplier += Mosquito.BloodMultiplier;
+
+            sukisuki.UpdateBar();
+
+            CheckUpgradeLevels();
+        }
+    }
+
     private void SetupShop()
     {
         MinigameManager.IsMinigameActive = true;
@@ -77,6 +126,10 @@ public class BloodCollector : MonoBehaviour
             UnlockButton.gameObject.SetActive(false);
             BloodInBankText.gameObject.SetActive(true);
             CashOutButton.gameObject.SetActive(true);
+            LevelUpgradeButton.gameObject.SetActive(true);
+            CapacityUpgradeButton.gameObject.SetActive(true);
+
+            CheckUpgradeLevels();
         }
 
         else 
@@ -84,6 +137,8 @@ public class BloodCollector : MonoBehaviour
             UnlockButton.gameObject.SetActive(true);
             BloodInBankText.gameObject.SetActive(false);
             CashOutButton.gameObject.SetActive(false);
+            LevelUpgradeButton.gameObject.SetActive(false);
+            CapacityUpgradeButton.gameObject.SetActive(false);
 
             UpdateText();
         }
@@ -95,6 +150,19 @@ public class BloodCollector : MonoBehaviour
         canvas.SetActive(false);
         MinigameManager.IsMinigameActive = false;
         UsingShop = false;
+    }
+
+    private void CheckUpgradeLevels()
+    {
+        if(Mosquito.BankCapacityLevel > 3)
+        {
+            CapacityUpgradeButton.gameObject.SetActive(false);
+        }
+
+        if (Mosquito.BloodBankLevel > 3)
+        {
+            LevelUpgradeButton.gameObject.SetActive(false);
+        }
     }
 
     public void UnlockBloodCollector()
@@ -114,7 +182,6 @@ public class BloodCollector : MonoBehaviour
 
         }
     }
-
     private void UpdateText()
     {
         if (CurrentBloodText != null)
@@ -124,8 +191,20 @@ public class BloodCollector : MonoBehaviour
 
         if (BloodInBankText != null)
         {
-            BloodInBankText.text = "Blood in bank: " + (int)Mosquito.BloodInBank;
+            BloodInBankText.text = "Blood in bank: " + (int)Mosquito.BloodInBank + " / " + (int)Mosquito.BloodBankCapacity;
         }
+
+        if (CaUpText != null)
+        {
+            CaUpText.text = "Upgrade capacity - " + ((int)(CapacityUpgradeCost * Mosquito.BankCapacityLevel));
+        }
+
+        if (LeUpText != null)
+        {
+            LeUpText.text = "Upgrade speed - " + ((int)(LevelUpgradeCost * Mosquito.BloodBankLevel));
+        }
+
+        
     }
 
     void OnGUI()

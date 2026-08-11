@@ -6,11 +6,13 @@ public class Mosquito : MonoBehaviour
 
     public static float BloodAmount;
 
+    // Pankkijutskat
     public static bool BloodCollectorUnlocked = false;
-
     public static float BloodInBank;
-
-    private float BloodMultiplier = 0.1f;
+    public static float BloodBankCapacity = 100f;
+    public static float BankCapacityLevel = 1f;
+    public static float BloodBankLevel = 1f;
+    public static float BloodMultiplier = 0.1f;
 
     private void Awake()
     {
@@ -22,7 +24,6 @@ public class Mosquito : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
     }
 
     private void Update()
@@ -38,7 +39,11 @@ public class Mosquito : MonoBehaviour
 
     private void AddBloodToBank()
     {
-        BloodInBank += Time.deltaTime * BloodMultiplier;
+        if (BloodInBank < BloodBankCapacity)
+        {
+            BloodInBank += Time.deltaTime * BloodMultiplier;
+        }
+        
     }
 
     private void OnDestroy()
