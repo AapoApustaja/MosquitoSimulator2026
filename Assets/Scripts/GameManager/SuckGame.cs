@@ -63,8 +63,19 @@ public class SuckGame : MonoBehaviour
 		StingHit.StuckOnHuman = false;
 		MinigameManager.IsMinigameActive = false;
 
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // veri nolliks jos kuolee
+        Mosquito.BloodAmount = 0;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
+
+    // Päivittää verimittarin ku vaihtaa sceneä
+    public void UpdateBar()
+    {
+        print(Mosquito.BloodAmount);
+        bloodAmount.maxValue = MaxBloodAmount;
+        bloodAmount.value = Mosquito.BloodAmount;
+    }
 
 	private void SetupGame()
     {
@@ -72,7 +83,11 @@ public class SuckGame : MonoBehaviour
 		pressure.maxValue = MaxPressure;
 		capacity.maxValue = MaxCapacity;
 		bloodAmount.maxValue = MaxBloodAmount;
-		bodycapacity_.SetActive(true);
+
+        // Ottaa hyttysen veren
+        bloodAmount.value = Mosquito.BloodAmount;
+		
+        bodycapacity_.SetActive(true);
 		Timer_.SetActive(true);
 		BloodAmount_.SetActive(true);
 		suckpressure_.SetActive(true);
@@ -88,11 +103,12 @@ public class SuckGame : MonoBehaviour
 		capacity.value += pressure.value * pressureMulti;
         bloodAmount.value += pressure.value * bloodAmountMulti;
 
+        Mosquito.BloodAmount = bloodAmount.value;
+
         if(capacity.value >= MaxCapacity)
         {
 
             loseGame();
-
 
 		}
 

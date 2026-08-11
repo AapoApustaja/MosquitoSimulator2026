@@ -21,6 +21,8 @@ public class StingHit : MonoBehaviour
     {
         rb = GetComponentInParent<Rigidbody>();
         sukisuki = FindAnyObjectByType<SuckGame>(FindObjectsInactive.Include);
+
+		sukisuki.UpdateBar();
     }
 
     // Tarkistetaan pistimen osumat (other antaa tiedot mihin törmätty)
