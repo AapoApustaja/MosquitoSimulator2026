@@ -175,6 +175,9 @@ public class BloodCollector : MonoBehaviour
 
             UnlockButton.gameObject.SetActive(false);
 
+            LevelUpgradeButton.gameObject.SetActive(true);
+            CapacityUpgradeButton.gameObject.SetActive(true);
+
             BloodInBankText.gameObject.SetActive(true);
             CashOutButton.gameObject.SetActive(true);
 

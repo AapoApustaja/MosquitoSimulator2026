@@ -13,16 +13,15 @@ public class MosquitoMovemint : MonoBehaviour
 	[SerializeField] private AudioClip HytySound;
 
     // jos haluaa käyttää useampaa
-	//[SerializeField] private AudioClip[] HytySounds;
+    //[SerializeField] private AudioClip[] HytySounds;
 
-	private float throttle;
+    private float normalTurnspeed = 40.0f;
+
+    private float throttle;
 	private Vector3 rotationTorque;
 	private float roll;
 	private float pitch;
 	private float yaw;
-
-    private float normalSpeed = 5.0f;
-    private float normalTurnspeed = 40.0f;
 
     int sceneNumber = 0;
 
@@ -169,7 +168,7 @@ public class MosquitoMovemint : MonoBehaviour
         float sidewaysInput = Input.GetAxis("Horizontal");
 
         // movementti joka kattoo missä objekti o
-        Vector3 velocity = transform.forward * forwardInput * normalSpeed + transform.right * sidewaysInput * normalSpeed;
+        Vector3 velocity = transform.forward * forwardInput * Mosquito.normalSpeed + transform.right * sidewaysInput * Mosquito.normalSpeed;
 
         // painovoima check
         if (rb.useGravity)
@@ -181,7 +180,7 @@ public class MosquitoMovemint : MonoBehaviour
             // ylös space
             if (Input.GetKey(KeyCode.Space))
             {
-				velocity += Vector3.up * normalSpeed;
+				velocity += Vector3.up * Mosquito.normalSpeed;
             }
 
             //meemi
@@ -199,7 +198,7 @@ public class MosquitoMovemint : MonoBehaviour
 			// alas control
 			if (Input.GetKey(KeyCode.LeftControl))
             {
-                velocity += Vector3.down * normalSpeed;
+                velocity += Vector3.down * Mosquito.normalSpeed;
             }
         }
 

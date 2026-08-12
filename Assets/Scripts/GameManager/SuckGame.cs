@@ -25,12 +25,9 @@ public class SuckGame : MonoBehaviour
     private float capacityAmoundDown = 4f;
     private float pressureMulti = 0.1f;
 
-    private float bloodAmountMulti = 0.001f;
-
 	private float MaxCapacity = 1000;
     private float MaxPressure = 100;
     private float MaxTime = 100;
-	private float MaxBloodAmount = 100 ;
 
     private float Cooldown = 0.1f;
     private float CoolDownTimer = 0f; 
@@ -75,7 +72,7 @@ public class SuckGame : MonoBehaviour
     // Päivittää verimittarin ku vaihtaa sceneä
     public void UpdateBar()
     {
-        bloodAmount.maxValue = MaxBloodAmount;
+        bloodAmount.maxValue = Mosquito.MaxBloodAmount;
         bloodAmount.value = Mosquito.BloodAmount;
     }
 
@@ -84,7 +81,7 @@ public class SuckGame : MonoBehaviour
 		time.maxValue = MaxTime;
 		pressure.maxValue = MaxPressure;
 		capacity.maxValue = MaxCapacity;
-		bloodAmount.maxValue = MaxBloodAmount;
+		bloodAmount.maxValue = Mosquito.MaxBloodAmount;
 
         // Ottaa hyttysen veren
         bloodAmount.value = Mosquito.BloodAmount;
@@ -103,7 +100,7 @@ public class SuckGame : MonoBehaviour
 		pressure.value -= pressureAmountDown;
 		capacity.value -= capacityAmoundDown;
 		capacity.value += pressure.value * pressureMulti;
-        bloodAmount.value += pressure.value * bloodAmountMulti;
+        bloodAmount.value += pressure.value * Mosquito.bloodSuckMulti;
 
         Mosquito.BloodAmount = bloodAmount.value;
 

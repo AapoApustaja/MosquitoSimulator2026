@@ -1,8 +1,10 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Mosquito : MonoBehaviour
 {
     public static Mosquito Instance { get; private set; }
+
 
     public static float BloodAmount;
 
@@ -13,6 +15,14 @@ public class Mosquito : MonoBehaviour
     public static float BankCapacityLevel = 1f;
     public static float BloodBankLevel = 1f;
     public static float BloodMultiplier = 0.1f;
+
+    // Upgradettavat jutut
+    public static float normalSpeed = 5.0f;
+    public static float MaxBloodAmount = 100f;
+    public static float bloodSuckMulti = 0.001f;
+    public static float speedLevel = 1f;
+    public static float CapLevel = 1f;
+    public static float MultiLevel = 1f;
 
     private void Awake()
     {
