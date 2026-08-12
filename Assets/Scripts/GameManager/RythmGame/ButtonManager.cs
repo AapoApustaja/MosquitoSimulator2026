@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
@@ -9,6 +10,9 @@ public class ButtonManager : MonoBehaviour
     public Button buttonDown;
     public Button buttonRight;
 
+	public ImageChanger sydan1;
+	public ImageChanger sydan2;
+	public ImageChanger sydan3;
 
 
 	public KeyCode keyleft = KeyCode.Alpha1;
@@ -46,6 +50,26 @@ public class ButtonManager : MonoBehaviour
 
 	}
 
+	public int Health = 3;
+
+
+	public void TakeDamage()
+	{
+		if (Health == 3)
+		{
+			sydan1.ChangePic();
+			Health--;
+		}
+		else if (Health == 2)
+		{
+			sydan2.ChangePic();
+			Health--;
+		}
+		else if (Health == 1)
+		{
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		}
+	}
 	void SelectButton(Button button)
 	{
 		EventSystem.current.SetSelectedGameObject(button.gameObject);
