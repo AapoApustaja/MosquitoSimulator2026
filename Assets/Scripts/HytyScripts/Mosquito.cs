@@ -24,6 +24,16 @@ public class Mosquito : MonoBehaviour
     public static float CapLevel = 1f;
     public static float MultiLevel = 1f;
 
+    // base koristeet
+    public static bool CarpetOwned = false;
+    public static bool CarpetOn = false;
+    public static int currentCarpent = 0;
+
+    public static bool PaintingOwned = false;
+    public static bool PaintingOn = false;
+
+    public static Color selectedColor;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
