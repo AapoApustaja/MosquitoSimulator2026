@@ -49,7 +49,7 @@ public class ButtonManager : MonoBehaviour
 	void SelectButton(Button button)
 	{
 		EventSystem.current.SetSelectedGameObject(button.gameObject);
-		Debug.Log("Selected: " + button.name);
+		button.onClick.Invoke();
 	}
 
 }
