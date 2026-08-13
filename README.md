@@ -22,6 +22,7 @@
 - There are 3 different equippable hats you can unlock by doing different challenges.
 - 3 different scenes: Outside the house, inside the house and the base.
 - The game can be manually saved, but also has an autosave when you close the game.
+- All assets are self-made, except the carpet textures inside the house.
 - Picture of the outside scene
  <img width="1687" height="1230" alt="image" src="https://github.com/user-attachments/assets/73992954-6cb0-4c55-a5bf-5148cf4b1dbe" />
 - Picture of the mosquito bench pressing in the base
