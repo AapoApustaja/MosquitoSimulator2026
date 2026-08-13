@@ -8,8 +8,6 @@ public class SettingsMenu : MonoBehaviour
 	public GameObject ControlsMenus;
 	public GameObject VolumeMenus;
 
-
-
 	public void Sens()
 	{
 		VolumeMenus.SetActive(true);

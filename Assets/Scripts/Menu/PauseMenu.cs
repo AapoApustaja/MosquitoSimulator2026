@@ -47,7 +47,16 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
 	}
 
-    public void GoToMainMenu()
+    // tallennus
+	public void SaveGame()
+	{
+		if (DataManager.instance != null)
+		{
+			DataManager.instance.SaveGame();
+		}
+	}
+
+	public void GoToMainMenu()
     {
         Time.timeScale = 1f;
         // 0 = MainMenu
