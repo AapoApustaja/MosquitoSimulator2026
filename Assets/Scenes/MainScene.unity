@@ -2563,7 +2563,7 @@ MonoBehaviour:
   bloodAmount: {fileID: 2005680970}
   nuoliPrefab: {fileID: 6045487494866013579, guid: 9c9f25068a830d440b0a323444b26090, type: 3}
   Manager: {fileID: 1736816610}
-  spawnAika: 0.6
+  spawnAika: 7
 --- !u!1 &204379759 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3286910004361259421, guid: 047c5bdd43d329e46a426203de8efe94, type: 3}
@@ -8872,7 +8872,7 @@ MonoBehaviour:
   bloodAmount: {fileID: 2005680970}
   nuoliPrefab: {fileID: 2662694588500081249, guid: dfcfcc8d66e678f44aec1d8d40264d8e, type: 3}
   Manager: {fileID: 1736816610}
-  spawnAika: 1.2
+  spawnAika: 5
 --- !u!4 &993325307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b217a9ebea055f84ea44bdc2c169ce0b, type: 3}
@@ -14099,6 +14099,10 @@ MonoBehaviour:
   sydan1: {fileID: 1668534721}
   sydan2: {fileID: 1981342686}
   sydan3: {fileID: 440968290}
+  ArrowspawnerLeft: {fileID: 0}
+  ArrowspawnerRight: {fileID: 0}
+  ArrowspawnerUp: {fileID: 0}
+  ArrowspawnerDown: {fileID: 0}
   keyleft: 276
   keyup: 273
   keydown: 274
@@ -16641,7 +16645,7 @@ MonoBehaviour:
   bloodAmount: {fileID: 2005680970}
   nuoliPrefab: {fileID: 91152053653831495, guid: 3312474c6b79b46418fb56969950d703, type: 3}
   Manager: {fileID: 1736816610}
-  spawnAika: 0.8
+  spawnAika: 4
 --- !u!1 &2033775894
 GameObject:
   m_ObjectHideFlags: 0
@@ -17198,7 +17202,7 @@ MonoBehaviour:
   bloodAmount: {fileID: 2005680970}
   nuoliPrefab: {fileID: 3216906131217223891, guid: 55f2e720663d8a348ab3b46cd4786b4b, type: 3}
   Manager: {fileID: 1736816610}
-  spawnAika: 1
+  spawnAika: 3
 --- !u!1 &2094032159 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5121540077925410333, guid: 047c5bdd43d329e46a426203de8efe94, type: 3}

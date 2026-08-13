@@ -3,7 +3,7 @@ using UnityEngine;
 public class ArrowScript : MonoBehaviour
 {
 
-    private float FallSpeed = 100f;
+    private float FallSpeed = 60f;
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
     {

@@ -1,4 +1,4 @@
-using System;
+
 using UnityEngine;
 
 public class StingHit : MonoBehaviour
@@ -8,8 +8,11 @@ public class StingHit : MonoBehaviour
 	Vector3 direction;
 	float cooldown = 2f;
 	float cooldownTimer = 0f;
+	private int RandomNum;
+	private bool minigameStarted = false;
 
 	private SuckGame sukisuki;
+	private ButtonManager RythmGame;
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
@@ -21,7 +24,7 @@ public class StingHit : MonoBehaviour
     {
         rb = GetComponentInParent<Rigidbody>();
         sukisuki = FindAnyObjectByType<SuckGame>(FindObjectsInactive.Include);
-
+		RythmGame = FindAnyObjectByType<ButtonManager>(FindObjectsInactive.Include);
 		sukisuki.UpdateBar();
     }
 
@@ -35,6 +38,7 @@ public class StingHit : MonoBehaviour
         if (IsSuckable != null && cooldownTimer <= 0)
         {
             StuckOnHuman = true;
+			minigameStarted = false;
 
 			MinigameManager.IsMinigameActive = true;
             // haetaan hyttysen body ja j‰hmetet‰‰n
@@ -60,15 +64,31 @@ public class StingHit : MonoBehaviour
 		if (StuckOnHuman)
 		{
 			//Aloteitaan suki suki
-			if (Input.GetKey(KeyCode.Space))
+			if (Input.GetKey(KeyCode.Space) && !minigameStarted)
 			{ 
 				if (sukisuki == null)
 				{
                     sukisuki = FindAnyObjectByType<SuckGame>(FindObjectsInactive.Include);
                 }
 
-                    sukisuki.gameObject.SetActive(true);
-                    sukisuki.enabled = true;
+				if (RythmGame == null)
+				{
+					RythmGame = FindAnyObjectByType<ButtonManager>(FindObjectsInactive.Include);
+				}
+				RandomNum = Random.Range(1, 3);
+
+				if(RandomNum == 1)
+				{
+					RythmGame.gameObject.SetActive(true);
+				}
+				else if(RandomNum == 2)
+				{
+					sukisuki.gameObject.SetActive(true);
+					sukisuki.enabled = true;
+
+				}
+				
+				minigameStarted = true;
 
 			}
 
@@ -77,6 +97,7 @@ public class StingHit : MonoBehaviour
 			else if (Input.GetKey(KeyCode.LeftShift))
 			{
                 StuckOnHuman = false;
+				minigameStarted = false;
 				MinigameManager.IsMinigameActive = false;
 
                 //Siirret‰‰n hyty kaummaks
