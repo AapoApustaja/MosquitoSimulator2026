@@ -66,6 +66,8 @@ public class SuckGame : MonoBehaviour
         // veri nolliks jos kuolee
         Mosquito.BloodAmount = 0;
 
+        Mosquito.HaloUnlocked = true;
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 

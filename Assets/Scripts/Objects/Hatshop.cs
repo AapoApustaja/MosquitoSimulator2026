@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 public class Hatshop : MonoBehaviour
@@ -9,6 +10,11 @@ public class Hatshop : MonoBehaviour
 
 
     [SerializeField] private GameObject canvas;
+
+    [SerializeField] private Button HaloButton;
+    [SerializeField] private Button CatEarsButton;
+    [SerializeField] private Button DisguiseButton;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -46,12 +52,20 @@ public class Hatshop : MonoBehaviour
         Mosquito.Instance.GetComponentInChildren<Hats>().RemoveHat();
     }
 
+    private void CheckUnlocks()
+    {
+        HaloButton.gameObject.SetActive(Mosquito.HaloUnlocked);
+        CatEarsButton.gameObject.SetActive(Mosquito.CatEarsUnlocked);
+        DisguiseButton.gameObject.SetActive(Mosquito.DisguiseUnlocked);
+    }
+
     private void SetupShop()
     {
         MinigameManager.IsMinigameActive = true;
         UsingShop = true;
 
         canvas.SetActive(true);
+        CheckUnlocks();
     }
 
     private void CloseShop()

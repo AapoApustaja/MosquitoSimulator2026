@@ -106,6 +106,11 @@ public class BenchPress : MonoBehaviour
                     reps++;
                     RepsText.text = "Reps: " + reps;
                     EarlyText.text = " ";
+
+                    if (reps >= 10)
+                    {
+                        Mosquito.CatEarsUnlocked = true;
+                    }
                 }
 
                 BenchSlider.value = BenchSlider.maxValue;

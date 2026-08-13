@@ -34,6 +34,11 @@ public class Mosquito : MonoBehaviour
 
     public static Color selectedColor;
 
+    // Hatut
+    public static bool HaloUnlocked = false;
+    public static bool CatEarsUnlocked = false;
+    public static bool DisguiseUnlocked = false;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -45,6 +50,7 @@ public class Mosquito : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
+        BloodAmount = 3000;
     }
 
     private void Update()

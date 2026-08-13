@@ -14,6 +14,8 @@ public class UpgradeMachine : MonoBehaviour
     private float CapacityUpgradeCost = 100f;
     private float MultiUpgradeCost = 100f;
 
+    private int maxUpgrades = 0;
+
     [SerializeField] private GameObject canvas;
 
     [SerializeField] private TMP_Text CurrentBloodText;
@@ -98,6 +100,11 @@ public class UpgradeMachine : MonoBehaviour
             MultiUpgradeButton.gameObject.SetActive(false);
             SuckMaxed.gameObject.SetActive(true);
         }
+
+        if(maxUpgrades >= 3)
+        {
+            Mosquito.DisguiseUnlocked = true;
+        }
     }
 
     public void UpgradeSpeed()
@@ -109,6 +116,11 @@ public class UpgradeMachine : MonoBehaviour
 
             Mosquito.speedLevel += 1;
             Mosquito.normalSpeed += 2;
+
+            if (Mosquito.speedLevel > 3)
+            {
+                maxUpgrades++;
+            }
 
             sukisuki.UpdateBar();
             checkUpgradeLevels();
@@ -126,6 +138,11 @@ public class UpgradeMachine : MonoBehaviour
             Mosquito.CapLevel += 1;
             Mosquito.MaxBloodAmount += Mosquito.MaxBloodAmount;
 
+            if (Mosquito.CapLevel > 3)
+            {
+                maxUpgrades++;
+            }
+
             sukisuki.UpdateBar();
             checkUpgradeLevels();
         }
@@ -140,6 +157,11 @@ public class UpgradeMachine : MonoBehaviour
 
             Mosquito.MultiLevel += 1;
             Mosquito.bloodSuckMulti += Mosquito.bloodSuckMulti;
+
+            if (Mosquito.MultiLevel > 3)
+            {
+                maxUpgrades++;
+            }
 
             sukisuki.UpdateBar();
             checkUpgradeLevels();
