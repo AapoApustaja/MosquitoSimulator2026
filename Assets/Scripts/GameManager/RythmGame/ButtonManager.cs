@@ -25,11 +25,15 @@ public class ButtonManager : MonoBehaviour
 	public KeyCode keydown = KeyCode.Alpha3;
 	public KeyCode keyright = KeyCode.Alpha4;
 
+	Rigidbody rb;
+
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
 	{
 		SetupManager();
-	}
+
+        rb = FindAnyObjectByType<Rigidbody>(FindObjectsInactive.Include);
+    }
 
 	private void OnEnable()
 	{
@@ -100,7 +104,8 @@ public class ButtonManager : MonoBehaviour
 		else if (Health == 1)
 		{
 			CloseGame();
-		}
+
+        }
 	}
 
 	private void CloseGame()
@@ -111,10 +116,20 @@ public class ButtonManager : MonoBehaviour
 		if (ArrowspawnerUp != null) ArrowspawnerUp.gameObject.SetActive(false);
 		if (ArrowspawnerDown != null) ArrowspawnerDown.gameObject.SetActive(false);
 
-		gameObject.SetActive(false);
-		StingHit.StuckOnHuman = false;
-		MinigameManager.IsMinigameActive = false;
-	}
+        rb.isKinematic = false;
+
+        gameObject.SetActive(false);
+        StingHit.StuckOnHuman = false;
+        MinigameManager.IsMinigameActive = false;
+
+        // veri nolliks jos kuolee
+        Mosquito.BloodAmount = 0;
+
+        Mosquito.HaloUnlocked = true;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
 	void SelectButton(Button button)
 	{
 		EventSystem.current.SetSelectedGameObject(button.gameObject);

@@ -87,11 +87,6 @@ public class Mosquito : MonoBehaviour, IDataPersistence
         LoadData(data, true);
     }
 
-    public void LoadDataWithoutScene(GameData data)
-    {
-        LoadData(data, false);
-    }
-
     private void LoadData(GameData data, bool loadScene)
     {
         if (data == null)
@@ -131,7 +126,6 @@ public class Mosquito : MonoBehaviour, IDataPersistence
         CatEarsUnlocked = data.CatEarsUnlocked;
         DisguiseUnlocked = data.DisguiseUnlocked;
 
-        // Load the saved scene only when loading game, not when saving
         if (loadScene && data.LastSceneIndex > 0)
         {
             SceneManager.LoadScene(data.LastSceneIndex);
@@ -171,7 +165,6 @@ public class Mosquito : MonoBehaviour, IDataPersistence
         data.CatEarsUnlocked = CatEarsUnlocked;
         data.DisguiseUnlocked = DisguiseUnlocked;
 
-        // Save the current scene index
         data.LastSceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
