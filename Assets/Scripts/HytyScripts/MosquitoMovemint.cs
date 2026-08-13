@@ -37,6 +37,7 @@ public class MosquitoMovemint : MonoBehaviour
         Application.targetFrameRate = 60; 
 
         SceneManager.sceneLoaded += OnSceneLoaded;
+
     }
 
     private void OnDestroy()
@@ -76,7 +77,7 @@ public class MosquitoMovemint : MonoBehaviour
         if (ControlsMenu.MovementType == 1)
         {
             rb.freezeRotation = true;
-            animator.SetBool("Flying", false);
+            animator.SetBool("Flying", true);
         }
     }
 
