@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -83,6 +84,10 @@ public class ButtonManager : MonoBehaviour
 			SelectButton(buttonRight);
 		}
 
+		if (Input.GetKeyDown(KeyCode.LeftShift))
+		{
+			CloseGame();
+		}
 
 	}
 
@@ -103,7 +108,7 @@ public class ButtonManager : MonoBehaviour
 		}
 		else if (Health == 1)
 		{
-			CloseGame();
+			LoseGame();
 
         }
 	}
@@ -122,6 +127,22 @@ public class ButtonManager : MonoBehaviour
         StingHit.StuckOnHuman = false;
         MinigameManager.IsMinigameActive = false;
 
+    }
+
+    private void LoseGame()
+    {
+        // Deactivate all arrow spawners
+        if (ArrowspawnerLeft != null) ArrowspawnerLeft.gameObject.SetActive(false);
+        if (ArrowspawnerRight != null) ArrowspawnerRight.gameObject.SetActive(false);
+        if (ArrowspawnerUp != null) ArrowspawnerUp.gameObject.SetActive(false);
+        if (ArrowspawnerDown != null) ArrowspawnerDown.gameObject.SetActive(false);
+
+        rb.isKinematic = false;
+
+        gameObject.SetActive(false);
+        StingHit.StuckOnHuman = false;
+        MinigameManager.IsMinigameActive = false;
+
         // veri nolliks jos kuolee
         Mosquito.BloodAmount = 0;
 
@@ -130,7 +151,7 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-	void SelectButton(Button button)
+    void SelectButton(Button button)
 	{
 		EventSystem.current.SetSelectedGameObject(button.gameObject);
 		button.onClick.Invoke();

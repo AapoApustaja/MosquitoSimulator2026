@@ -23,9 +23,13 @@ public class Arrowspawner : MonoBehaviour
 	private float gameTimer = 0f;
 	private float minSpawnTime = 1.2f;
 
-	// Start is called once before the first execution of Update after the MonoBehaviour is created
-	void Start()
+    Rigidbody rb;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
     {
+        rb = FindAnyObjectByType<Rigidbody>(FindObjectsInactive.Include);
+
         SetupSpawner();
     }
 
@@ -44,6 +48,8 @@ public class Arrowspawner : MonoBehaviour
 
 	private void CloseGame()
 	{
+		rb.isKinematic = false;
+
 		gameObject.SetActive(false);
 		StingHit.StuckOnHuman = false;
 		MinigameManager.IsMinigameActive = false;
@@ -65,6 +71,11 @@ public class Arrowspawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		if(Input.GetKeyDown(KeyCode.LeftShift))
+		{
+			CloseGame();
+		}
+
         if(!HasStarted)
         {
             if(Input.anyKeyDown)
